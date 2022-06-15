@@ -10,8 +10,8 @@
 # call by value VS call by reference
 
 
-<span style = " font-size:1.2em; color: blue; font-weight: bold; ">만약 이전 글을 안읽었다면, 읽고 이번 글을 읽기 바란다.</span><br/>
-<span style = " font-size:1.2em; color: blue; font-weight: bold; ">훨씬 더 이해가 잘 될 것이다. (바로 밑의 링크)</span>
+### 만약 이전 글을 안읽었다면, 읽고 이번 글을 읽기 바란다.
+### 훨씬 더 이해가 잘 될 것이다. (바로 밑의 링크)
 
 <br/>
 
@@ -29,7 +29,7 @@
 
 <br/>
 
-<code><strong> Scope 의 개념부터 알아야 한다.</strong></code>
+### Scope 의 개념부터 알아야 한다.
 
 <br/>
 
@@ -85,7 +85,7 @@
 <br/>
     
 
-<code><strong>이제 본격적으로 call by value 부터 알아보자.</strong></code>
+### 이제 본격적으로 call by value 부터 알아보자.
 
 <br/>
 
@@ -189,7 +189,7 @@ public class Test {
 
 <br/>
 
-<code><strong>이제 call by reference 를 알아보자.</strong></code>
+### 이제 call by reference 를 알아보자.
 
 <br/>
 
@@ -271,7 +271,7 @@ public class Test {
 
 <br/>
 
-<code><strong>이제 call by value 와 call by reference 의 차이를 알아보자.</strong></code>
+### 이제 call by value 와 call by reference 의 차이를 알아보자.
 
 <br/>
 
