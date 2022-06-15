@@ -341,4 +341,4 @@
 <span style = " font-size:1.5em; color: red; font-weight: bold; ">여기서 한 발자국만 더 나아가보자. (밑의 링크)</span>
 
 
-**다음 글 :** **[[Java, C] call by value   VS   call by reference](https://bit.ly/3O9YyYm){:target="_blank"}**
+**다음 글 :** **[[Java, C] call by value   VS   call by reference](https://bit.ly/3xUzAHl)**

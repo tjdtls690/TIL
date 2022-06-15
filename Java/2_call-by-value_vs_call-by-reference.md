@@ -13,7 +13,7 @@
 <span style = " font-size:1.2em; color: blue; font-weight: bold; ">만약 이전 글을 안읽었다면, 읽고 이번 글을 읽기 바란다.</span><br/>
 <span style = " font-size:1.2em; color: blue; font-weight: bold; ">훨씬 더 이해가 잘 될 것이다. (바로 밑의 링크)</span>
 
-**이전 글 :** **[[Java, C] 배열의 본질, 포인터와 배열의 관계](https://bit.ly/3QgG4XR){:target="_blank"}**
+**이전 글 :** **[배열의 본질, 포인터와 배열의 관계](https://bit.ly/3xRqg6O)**
 
 
 
