@@ -18,7 +18,7 @@
 
 <br/>
 
-<span style = " font-size:1.5em; color: red; font-weight: bold; "> 일단 포인터가 무엇인지부터 알아야한다.</span>
+### 일단 포인터가 무엇인지부터 알아야한다.
 
 <br/>
 
@@ -82,7 +82,7 @@
 
 <br/>
 
-<span style = " font-size:1.5em; color: red; font-weight: bold; "> 이제 포인터변수에게 메모리의 공간을 수동으로 할당해주는 malloc() 함수를 알아야한다.</span>
+### 이제 포인터변수에게 메모리의 공간을 수동으로 할당해주는 malloc() 함수를 알아야한다.
 
 <br/>
 
@@ -196,7 +196,7 @@
 
 <br/>
 
-<span style = " font-size:1.5em; color: red; font-weight: bold; "> 근데 이거 어디서 많이 본 모양새인데?? 설마 배열??</span>
+### 근데 이거 어디서 많이 본 모양새인데?? 설마 배열??
 
 <br/>
 
@@ -274,7 +274,7 @@
 
 <br/>
 
-<span style = " font-size:1.5em; color: red; font-weight: bold; "> 내 수준이 아직 낮아서 나만 소름돋는 것일 수 있겠다는 생각도 든다...</span>
+### 내 수준이 아직 낮아서 나만 소름돋는 것일 수 있겠다는 생각도 든다...
 
 <br/>
 
@@ -338,9 +338,9 @@
 
 <br/>
 
-<span style = " font-size:1.5em; color: red; font-weight: bold; ">이번에 공부하면서 자바에 빗대어 생각해볼 때, 사실 배열뿐만이 아닌 모든 참조변수는 결국 C언어의 포인터와 일맥상통하다고 느꼈다.</span>
+### 이번에 공부하면서 자바에 빗대어 생각해볼 때, 사실 배열뿐만이 아닌 모든 참조변수는 결국 C언어의 포인터와 일맥상통하다고 느꼈다.
 
-<span style = " font-size:1.5em; color: red; font-weight: bold; ">여기서 한 발자국만 더 나아가보자. (밑의 링크)</span>
+### 여기서 한 발자국만 더 나아가보자. (밑의 링크)
 
 
 **다음 글 :** **[call by value   VS   call by reference](https://bit.ly/3xUzAHl)**
