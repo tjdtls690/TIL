@@ -1,9 +1,9 @@
 # 목차
 
-1. [Scope](#1-scope)
-2. call by value
-3. call by reference
-4. call by value VS call by reference
+[1. Scope](#1-scope)
+[2. call by value](#2-call-by-value)
+[3. call by reference](#3-call-by-reference)
+[4. call by value VS call by reference](#4-call-by-value-와-call-by-reference-의-장단점)
 
 * toc
 {:toc .large-only}
