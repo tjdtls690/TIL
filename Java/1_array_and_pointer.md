@@ -16,9 +16,11 @@
 >
 > **그러한 부분들은 피드백 부탁한다.**
 
-
+<br/>
 
 <span style = " font-size:1.5em; color: red; font-weight: bold; "> 일단 포인터가 무엇인지부터 알아야한다.</span>
+
+<br/>
 
 
 
@@ -50,7 +52,7 @@
   // 10
   ```
 
-  
+  <br/>
 
 - 위의 예제가 메모리상에서 어떤식으로 작동되는지 하나씩 풀어보자.
   1. 메모리(RAM)엔 각각 **1byte (8bit)** 의 데이터가 들어갈 수 있는 방들이 존재한다.
@@ -78,11 +80,11 @@
   7. 포인터변수 aPointer 앞에 *(애스터리스크) 를 붙임으로써, aPointer 가 가지고있는 주소**(변수 a의 위치) 에 있는 값**을 가져온다.
   8. 일반변수 a의 값인 10을 출력한다.
 
-
+<br/>
 
 <span style = " font-size:1.5em; color: red; font-weight: bold; "> 이제 포인터변수에게 메모리의 공간을 수동으로 할당해주는 malloc() 함수를 알아야한다.</span>
 
-
+<br/>
 
 # 2. void* malloc(int x) 함수는 무엇인가?
 
@@ -95,7 +97,7 @@
   int* x = (int*)malloc(8);
   ```
 
-  
+  <br/>
 
 - 여기서 드는 의문점 : **int 자료형은 4byte 크기**인데 8byte를 할당해서 주면 **남은 4byte는 낭비**되는 것이 아닌가??
 
@@ -113,7 +115,7 @@
   *(x + 1) = 20;
   ```
 
-  
+  <br/>
 
   - 위의 예제가 메모리상에서 어떤식으로 작동되는지 하나씩 풀어보자.
 
@@ -129,7 +131,7 @@
 
          - 그렇기에, 알아서 4개의 방씩 건너뛰는 것이다.
 
-         
+<br/>
 
   - 여기서 **sizeof() 함수**를 활용해보면
 
@@ -143,7 +145,7 @@
 
     - 위의 예제는 결과적으로, 포인터변수 **x에 int 타입 5개의 변수를 저장할 수 있는 메모리 공간을 할당해주는 것**이다.
 
-      
+<br/>
 
   - 여기까지 이해했다면, 다음의 예제도 이해하기 쉬울 것이다.
 
@@ -192,11 +194,11 @@
     // 0xe15020
     ```
 
-
+<br/>
 
 <span style = " font-size:1.5em; color: red; font-weight: bold; "> 근데 이거 어디서 많이 본 모양새인데?? 설마 배열??</span>
 
-
+<br/>
 
 # 3. 포인터와 배열의 관계
 
@@ -208,7 +210,7 @@
   int[] arr = new int[5];
   ```
 
-  
+  <br/>
 
 - C언어도 마찬가지다.
 
@@ -218,7 +220,7 @@
   int arr[5];
   ```
 
-  
+<br/>  
 
 - 여기서 소름돋는 사실이 하나 있다.
 
@@ -270,11 +272,11 @@
 
   - 위 예제의 1번과 2번 예제가 <code><strong>완전히 똑같은 의미의 코드</strong></code>라는 것이다.
 
-    
+<br/>
 
 <span style = " font-size:1.5em; color: red; font-weight: bold; "> 내 수준이 아직 낮아서 나만 소름돋는 것일 수 있겠다는 생각도 든다...</span>
 
-
+<br/>
 
 - 위 예제의 1번과 2번 예제를 **섞어서 쓰는 것도 가능**하다.
 
@@ -334,11 +336,11 @@
   // 0x7ffd6ea38920
   ```
 
-
+<br/>
 
 <span style = " font-size:1.5em; color: red; font-weight: bold; ">이번에 공부하면서 자바에 빗대어 생각해볼 때, 사실 배열뿐만이 아닌 모든 참조변수는 결국 C언어의 포인터와 일맥상통하다고 느꼈다.</span>
 
 <span style = " font-size:1.5em; color: red; font-weight: bold; ">여기서 한 발자국만 더 나아가보자. (밑의 링크)</span>
 
 
-**다음 글 :** **[[Java, C] call by value   VS   call by reference](https://bit.ly/3xUzAHl)**
+**다음 글 :** **[call by value   VS   call by reference](https://bit.ly/3xUzAHl)**

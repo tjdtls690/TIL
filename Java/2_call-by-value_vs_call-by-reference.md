@@ -7,15 +7,17 @@
 
 <br/>
 
-# [Java, C] call by value VS call by reference
+# call by value VS call by reference
 
 
 <span style = " font-size:1.2em; color: blue; font-weight: bold; ">만약 이전 글을 안읽었다면, 읽고 이번 글을 읽기 바란다.</span><br/>
 <span style = " font-size:1.2em; color: blue; font-weight: bold; ">훨씬 더 이해가 잘 될 것이다. (바로 밑의 링크)</span>
 
+<br/>
+
 **이전 글 :** **[배열의 본질, 포인터와 배열의 관계](https://bit.ly/3xRqg6O)**
 
-
+<br/>
 
 > **이전 글에서 포인터와 참조변수의 관계에 대해 이해했다면,**
 >
@@ -25,11 +27,11 @@
 >
 > **call by value 와 call by reference 는 무엇이고, 그 차이점은 무엇일까??**
 
-
+<br/>
 
 <span style = " font-size:1.5em; color: red; font-weight: bold; "> 일단 Scope 의 개념부터 알아야 한다.</span>
 
-
+<br/>
 
 # 1. Scope
 
@@ -80,12 +82,12 @@
         2. main() 메서드에서도 printNum() 메서드 안에 선언된 변수 c 에 접근할 수 없다.
     
     
-    
+<br/>
     
 
 <span style = " font-size:1.5em; color: red; font-weight: bold; "> 이제 본격적으로 call by value 부터 알아보자.</span>
 
-
+<br/>
 
 # 2. call by value
 
@@ -185,11 +187,11 @@ public class Test {
 
     - <code><strong>이것이 call by value 다.</strong></code>
 
-      
+<br/>
 
 <span style = " font-size:1.5em; color: red; font-weight: bold; "> 이제 call by reference 를 알아보자.</span>
 
-
+<br/>
 
 # 3. call by reference
 
@@ -267,15 +269,15 @@ public class Test {
 
   - <span style = " font-size:1.2em; color: blue; font-weight: bold; "> 그렇기 때문에, main() 메서드의 arr 과 swap() 메서드의 arr 은 완전히 같은 객체가 된다.</span>
 
-    
+<br/>
 
 <span style = " font-size:1.5em; color: red; font-weight: bold; "> 이제 call by value 와 call by reference 의 차이를 알아보자.</span>
 
-
+<br/>
 
 # 4. call by value 와 call by reference 의 장단점
 
-- <span style = " font-size:1.5em; color: black; font-weight: bold; "> call by value</span>
+- <code><strong> call by value</strong></code>
 
   - <span style = " font-size:1.3em; color: black; font-weight: bold; ">장점</span>
 
@@ -294,7 +296,7 @@ public class Test {
 
         
 
-- <span style = " font-size:1.5em; color: black; font-weight: bold; ">call by reference</span>
+- <code><strong> call by reference</strong></code>
 
   - <span style = " font-size:1.3em; color: black; font-weight: bold; ">장점</span>
 
