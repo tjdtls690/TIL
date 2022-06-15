@@ -29,7 +29,7 @@
 
 <br/>
 
-<span style = " font-size:1.5em; color: red; font-weight: bold; "> 일단 Scope 의 개념부터 알아야 한다.</span>
+<code><strong> Scope 의 개념부터 알아야 한다.</strong></code>
 
 <br/>
 
@@ -85,7 +85,7 @@
 <br/>
     
 
-<span style = " font-size:1.5em; color: red; font-weight: bold; "> 이제 본격적으로 call by value 부터 알아보자.</span>
+<code><strong>이제 본격적으로 call by value 부터 알아보자.</strong></code>
 
 <br/>
 
@@ -189,7 +189,7 @@ public class Test {
 
 <br/>
 
-<span style = " font-size:1.5em; color: red; font-weight: bold; "> 이제 call by reference 를 알아보자.</span>
+<code><strong>이제 call by reference 를 알아보자.</strong></code>
 
 <br/>
 
@@ -271,7 +271,7 @@ public class Test {
 
 <br/>
 
-<span style = " font-size:1.5em; color: red; font-weight: bold; "> 이제 call by value 와 call by reference 의 차이를 알아보자.</span>
+<code><strong>이제 call by value 와 call by reference 의 차이를 알아보자.</strong></code>
 
 <br/>
 
@@ -314,14 +314,13 @@ public class Test {
       
 <br/>
 
-- <span style = " font-size:1.3em; color: blue; font-weight: bold; "> 가능하면 call by reference 는 쓰지 않는 것이 좋다. (함수의 철학 위배)</span>
-
-  - <span style = " font-size:1.3em; color: blue; font-weight: bold; "> 그러나 필요상황에 맞춰서 잘 쓰면 OK. </span>
+### 가능하면 call by reference 는 쓰지 않는 것이 좋다. (함수의 철학 위배)
+### 그러나 필요상황에 맞춰서 잘 쓰면 OK.
 
 <br/>
 
 
-<span style = " font-size:1.5em; color: red; font-weight: bold; "> 결론</span>
+## 결론
 
-- <span style = " font-size:1.3em; color: blue; font-weight: bold; ">call by value : 값을 복사하여 함수에게 넘기므로, 서로 영향을 주지 않는다. </span>
-- <span style = " font-size:1.3em; color: blue; font-weight: bold; "> call by reference : 포인터(주소) 를 넘기는 것이므로 서로 영향을 줄 수 있다. </span>
+- <code><strong>call by value : 값을 복사하여 함수에게 넘기므로, 서로 영향을 주지 않는다.</strong></code>
+- <code><strong>call by reference : 포인터(주소) 를 넘기는 것이므로 서로 영향을 줄 수 있다. </strong></code>
