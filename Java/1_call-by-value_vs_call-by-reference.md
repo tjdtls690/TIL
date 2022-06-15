@@ -1,9 +1,9 @@
 # 목차
 
-[1. Scope](#1-scope) <br/>
-[2. call by value](#2-call-by-value) <br/>
-[3. call by reference](#3-call-by-reference) <br/>
-[4. call by value VS call by reference](#4-call-by-value-와-call-by-reference-의-장단점) <br/>
+1. [Scope](#1-scope) <br/>
+2. [call by value](#2-call-by-value) <br/>
+3. [call by reference](#3-call-by-reference) <br/>
+4. [call by value VS call by reference](#4-call-by-value-와-call-by-reference-의-장단점) <br/>
 
 <br/><br/>
 
