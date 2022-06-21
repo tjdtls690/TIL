@@ -26,5 +26,5 @@
 - [call by value VS call by reference](https://bit.ly/3xUzAHl)
 - [배열](https://bit.ly/3QwgDSv)
 
-## [Algorithm](https://bit.ly/3xVeBnM)
+## [Algorithm](https://bit.ly/3NodNwd)
 - [재귀함수](https://bit.ly/3OsRt5b)
