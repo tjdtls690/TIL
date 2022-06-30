@@ -444,3 +444,40 @@
     ```
 
     - 생성을 다시 하는 것이 아닌 변경을 하려면 <code><strong>StringBuffer, StringBuilder</strong></code> 클래스를 사용하면 된다.
+
+    
+
+    
+- ## final 배열
+
+  - ```java
+    import java.util.Arrays;
+    
+    public class Application {
+        private final int num;
+        private final int[] intArr;
+    
+        public Application() {
+            num = 5;
+            intArr = new int[10];
+        }
+    
+        public static void main(String[] args) {
+            Application application = new Application();
+            application.run();
+        }
+    
+        private void run() {
+            // int 형은 final 이 붙으면 생성자에서 초기화 된 후에 값을 변경할 수 없다.
+    //        num = 7;
+    
+            // 배열은 참조형이기에 final 이 붙어도 참조중인 주소값만 바뀌지 않으면 된다.
+            // 즉, 요소를 바꿔도 상관 없다.
+            intArr[1] = 5;
+            System.out.println(intArr[1]);
+        }
+    }
+    
+    ```
+
+    
