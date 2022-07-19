@@ -26,6 +26,7 @@
 - [call by value VS call by reference](https://bit.ly/3xUzAHl)
 - [배열](https://bit.ly/3QwgDSv)
 - [다차원 배열](https://bit.ly/3yfc4Vx)
+- [String의 split() 메서드](https://bit.ly/3Ol5i5n)
 
 ## [Algorithm](https://bit.ly/3NodNwd)
 - [재귀함수](https://bit.ly/3yameqc)
