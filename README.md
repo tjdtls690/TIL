@@ -28,6 +28,7 @@
 - [다차원 배열](https://bit.ly/3yfc4Vx)
 - [String의 split() 메서드](https://bit.ly/3Ol5i5n)
 - [StringUtils API (1)](https://bit.ly/3cskksO)
+- [StringUtils API (2)](https://bit.ly/3cAdFgj)
 
 ## [Algorithm](https://bit.ly/3NodNwd)
 - [재귀함수](https://bit.ly/3yameqc)
