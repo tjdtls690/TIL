@@ -9,6 +9,15 @@
 13. [containsAny(final CharSequence cs, final CharSequence searchChars)](#13-containsanyfinal-charsequence-cs-final-charsequence-searchchars) <br/>
 14. [remove(final String str, final String remove)](#14-removefinal-string-str-final-string-remove) <br/>
 15. [delete](#15-delete) <br/>
+16. [replace(final String text, final String searchString, final String replacement)](#16-replacefinal-string-text-final-string-searchstring-final-string-replacement) <br/>
+17. [overlay(final String str, String overlay, int start, int end)](#17-overlayfinal-string-str-string-overlay-int-start-int-end) <br/>
+18. [upperCase(final String str)](#18-uppercasefinal-string-str) <br/>
+19. [lowerCase(final String str)](#19-lowercasefinal-string-str) <br/>
+20. [20. swapCase(final String str)](#20-swapcasefinal-string-str) <br/>
+21. [capitalize(final String str)](#21-capitalizefinal-string-str) <br/>
+22. [uncapitalize(final String str)](#22-uncapitalizefinal-string-str) <br/>
+23. [reverse(final String str)](#23-reversefinal-string-str) <br/>
+24. [reverseDelimited(final String str, final char separatorChar)](#24-reversedelimitedfinal-string-str-final-char-separatorchar) <br/>
 
 <br/>
 
@@ -287,4 +296,331 @@
 
     
 
-- ## 16.  여기서부터 이어서 작성
+- ## 16.  replace(final String text, final String searchString, final String replacement)
+
+  - <code><strong>text 문자열에서 searchString 을 replacement 로 대체한다.</strong></code>
+
+    - 이 메서드에 전달된 null 참조는 작동하지 않는다.
+
+  - 예제
+
+    - ```java
+      class Scratch {
+          public static void main(String[] args) {
+              System.out.println(StringUtils.replace(null, " ", ""));
+              System.out.println(StringUtils.replace("", "", "a"));
+              System.out.println(StringUtils.replace("any", null, "z"));
+              System.out.println(StringUtils.replace("any", "a", null));
+              System.out.println(StringUtils.replace("any", "", "z"));
+              System.out.println(StringUtils.replace("aba", "a", null));
+              System.out.println(StringUtils.replace("aba", "a", ""));
+              System.out.println(StringUtils.replace("aba", "a", "z"));
+          }
+      }
+      
+      // 출력 결과
+      // null
+      // 
+      // any
+      // any
+      // any
+      // aba
+      // b
+      // zbz
+      ```
+
+      
+
+- ## 17. overlay(final String str, String overlay, int start, int end)
+
+  - <code><strong>text 문자열에서 searchString 을 replacement 로 대체한다.</strong></code>
+
+    - 문자열의 일부를 다른 문자열로 오버레이한다.
+      - null 문자열 입력은 null 을 반환한다.
+      - 음수 인덱스는 0으로 처리된다.
+      - 문자열 길이보다 큰 인덱스는 문자열 길이로 처리된다. 
+      - 시작 인덱스는 항상 두 인덱스 중 작은 값이다.
+
+  - 예제
+
+    - ```java
+      class Scratch {
+          public static void main(String[] args) {
+              System.out.println(StringUtils.overlay(null, "a", 0, 0));
+              System.out.println(StringUtils.overlay("", "abc", 0, 0));
+              System.out.println(StringUtils.overlay("abcdef", null, 2, 4));
+              System.out.println(StringUtils.overlay("abcdef", "", 2, 4));
+              System.out.println(StringUtils.overlay("abcdef", "", 4, 2));
+              System.out.println(StringUtils.overlay("abcdef", "zzzz", 2, 4));
+              System.out.println(StringUtils.overlay("abcdef", "zzzz", 4, 2));
+              System.out.println(StringUtils.overlay("abcdef", "zzzz", -1, 4));
+              System.out.println(StringUtils.overlay("abcdef", "zzzz", 2, 8));
+              System.out.println(StringUtils.overlay("abcdef", "zzzz", -2, -3));
+              System.out.println(StringUtils.overlay("abcdef", "zzzz", 8, 10));
+          }
+      }
+      
+      // 출력 결과
+      // null
+      // abc
+      // abef
+      // abef
+      // abef
+      // abzzzzef
+      // abzzzzef
+      // zzzzef
+      // abzzzz
+      // zzzzabcdef
+      // abcdefzzzz
+      ```
+
+      
+
+- ## 18. upperCase(final String str)
+
+  - <code><strong>문자열을 대문자로 변환한다.</strong></code>
+
+    - null 입력 문자열은 null 을 반환한다.
+
+  - 실제 메서드 구현 모습
+
+    - ```java
+      public static String upperCase(final String str) {
+          if (str == null) {
+              return null;
+          }
+          return str.toUpperCase();
+      }
+      ```
+
+    - null 에 대한 대처만 추가하고 String 의 toUpperCase 메서드를 쓰는 모습이다.
+
+  - 예제
+
+    - ```java
+      class Scratch {
+          public static void main(String[] args) {
+              System.out.println(StringUtils.upperCase(null));
+              System.out.println(StringUtils.upperCase(""));
+              System.out.println(StringUtils.upperCase("aBc"));
+          }
+      }
+      
+      // 출력 결과
+      // null
+      // 
+      // ABC
+      ```
+
+      
+
+- ## 19. lowerCase(final String str)
+
+  - <code><strong>문자열을 소문자로 변환한다.</strong></code>
+
+    - null 입력 문자열은 null 을 반환한다.
+
+  - 실제 메서드 구현 모습
+
+    - ```java
+      public static String lowerCase(final String str) {
+          if (str == null) {
+              return null;
+          }
+          return str.toLowerCase();
+      }
+      ```
+
+    - 이것도 null 에 대한 대처만 추가하고 String 의 toLowerCase 메서드를 쓰는 모습이다.
+
+  - 예제
+
+    - ```java
+      class Scratch {
+          public static void main(String[] args) {
+              System.out.println(StringUtils.lowerCase(null));
+              System.out.println(StringUtils.lowerCase(""));
+              System.out.println(StringUtils.lowerCase("aBc"));
+          }
+      }
+      
+      // 출력 결과
+      // null
+      // 
+      // abc
+      ```
+
+      
+
+- ## 20. swapCase(final String str)
+
+  - <code><strong>대문자와 제목을 소문자로, 소문자를 대문자로 바꾸는 문자열의 대소문자를 바꾼다.</strong></code>
+
+  - 예제
+
+    - ```java
+      class Scratch {
+          public static void main(String[] args) {
+              System.out.println(StringUtils.swapCase(null));
+              System.out.println(StringUtils.swapCase(""));
+              System.out.println(StringUtils.swapCase("The dog has a BONE"));
+          }
+      }
+      
+      // 출력 결과
+      // null
+      // 
+      // tHE DOG HAS A bone
+      ```
+
+      
+
+- ## 21. capitalize(final String str)
+
+  - <code><strong>문자열의 가장 첫번째 문자를 대문자로 바꿔준다.</strong></code>
+
+    - null 입력 문자열은 null 을 반환한다.
+
+  - 예제
+
+    - ```java
+      class Scratch {
+          public static void main(String[] args) {
+              System.out.println(StringUtils.capitalize(null));
+              System.out.println(StringUtils.capitalize(""));
+              System.out.println(StringUtils.capitalize("cat"));
+              System.out.println(StringUtils.capitalize("cAt"));
+              System.out.println(StringUtils.capitalize("'cat'"));
+          }
+      }
+      
+      // 출력 결과
+      // null
+      // 
+      // Cat
+      // CAt
+      // 'cat'
+      ```
+
+      
+
+- ## 22. uncapitalize(final String str)
+
+  - <code><strong>문자열의 가장 첫번째 문자를 소문자로 바꿔준다.</strong></code>
+
+    - null 입력 문자열은 null 을 반환한다.
+
+  - 예제
+
+    - ```java
+      class Scratch {
+          public static void main(String[] args) {
+              System.out.println(StringUtils.uncapitalize(null));
+              System.out.println(StringUtils.uncapitalize(""));
+              System.out.println(StringUtils.uncapitalize("cat"));
+              System.out.println(StringUtils.uncapitalize("Cat"));
+              System.out.println(StringUtils.uncapitalize("CAT"));
+          }
+      }
+      
+      // 출력 결과
+      // null
+      // 
+      // cat
+      // cat
+      // cAT
+      ```
+
+      
+
+- ## 23. reverse(final String str)
+
+  - <code><strong>문자열을 뒤집는다.</strong></code>
+
+    - null 문자열은 null 을 반환한다.
+
+  - 실제 메서드 구현 모습
+
+    - ```java
+      public static String reverse(final String str) {
+          if (str == null) {
+              return null;
+          }
+          return new StringBuilder(str).reverse().toString();
+      }
+      ```
+
+    - null 만 대처한 뒤 StringBuilder 의 reverse() 메서드를 쓰는 모습이다.
+
+  - 예제
+
+    - ```java
+      class Scratch {
+          public static void main(String[] args) {
+              System.out.println(StringUtils.reverse(null));
+              System.out.println(StringUtils.reverse(""));
+              System.out.println(StringUtils.reverse("bat"));
+          }
+      }
+      
+      // 출력 결과
+      // null
+      // 
+      // tab
+      ```
+
+      
+
+- ## 24. reverseDelimited(final String str, final char separatorChar)
+
+  - <code><strong>특정 문자로 구분된 문자열을 뒤집는다.</strong></code>
+
+    - 구분 기호 사이의 문자열은 반전되지 않는다.
+
+  - 실제 메서드 구현 모습
+
+    - ```java
+      public static String reverseDelimited(final String str, final char separatorChar) {
+          if (str == null) {
+              return null;
+          }
+          // could implement manually, but simple way is to reuse other,
+          // probably slower, methods.
+          final String[] strs = split(str, separatorChar);
+          ArrayUtils.reverse(strs);
+          return join(strs, separatorChar);
+      }
+      ```
+
+    - null 에 대한 대처를 한 후, split 으로 나눠서 배열 순서를 뒤집는 모습이 보인다.
+
+  - 예제
+
+    - ```java
+      class Scratch {
+          public static void main(String[] args) {
+              System.out.println(StringUtils.reverseDelimited(null, 'x'));
+              System.out.println(StringUtils.reverseDelimited("", '.'));
+              System.out.println(StringUtils.reverseDelimited("a.b.c", 'b'));
+              System.out.println(StringUtils.reverseDelimited("a.b.c", 'x'));
+              System.out.println(StringUtils.reverseDelimited("a.b.c", '.'));
+          }
+      }
+      
+      // 출력 결과
+      // null
+      // 
+      // .cba.
+      // a.b.c
+      // c.b.a
+      ```
+
+      
+
+      <br/>
+
+      
+
+- 사실 이 외에도 더 많은 String 클래스와 같은 메서드들이 존재하지만 이 정도만 해도 굉장히 유용하다 생각한다.
+
+- null 에 대한 안정성이 생기는 것이니 앞으로 String 메서드보다 StringUtils 메서드를 더 활용해보는 것이 좋겠다.
