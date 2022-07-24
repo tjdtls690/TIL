@@ -333,7 +333,7 @@
 
 - ## 17. overlay(final String str, String overlay, int start, int end)
 
-  - <code><strong>text 문자열에서 searchString 을 replacement 로 대체한다.</strong></code>
+  - <code><strong>str 문자열에서 start 부터 end 까지 overlay 로 변경한다.</strong></code>
 
     - 문자열의 일부를 다른 문자열로 오버레이한다.
       - null 문자열 입력은 null 을 반환한다.
