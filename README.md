@@ -32,6 +32,7 @@
 - [StringUtils API (2)](https://bit.ly/3cAdFgj)
 - [equals() 와 hashcode() 를 같이 오버라이딩 하는 이유](https://bit.ly/3b7xnQ6)
 - [JUnit 5 의 개념 및 기초 사용법](https://bit.ly/3blX9jH)
+- [AssertJ 의 개념 및 기초 사용법](https://bit.ly/3vyh8m5)
 
 ## [Algorithm](https://bit.ly/3NodNwd)
 - [재귀함수](https://bit.ly/3yameqc)
