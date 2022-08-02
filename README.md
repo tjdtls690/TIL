@@ -33,6 +33,7 @@
 - [equals() 와 hashcode() 를 같이 오버라이딩 하는 이유](https://bit.ly/3b7xnQ6)
 - [JUnit 5 의 개념 및 기초 사용법](https://bit.ly/3blX9jH)
 - [AssertJ 의 개념 및 기초 사용법](https://bit.ly/3vyh8m5)
+- [JUnit - private 변수, 메서드 테스트하기](https://bit.ly/3SmX4gc)
 
 ## [Algorithm](https://bit.ly/3NodNwd)
 - [재귀함수](https://bit.ly/3yameqc)
