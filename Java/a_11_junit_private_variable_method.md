@@ -1,6 +1,7 @@
 # 목차
 
 1. [Private Variable 접근 방법](#1-private-variable-접근-방법) <br/>
+2. [Private Method 접근 방법](#2-private-method-접근-방법) <br/>
 
 <br/>
 
@@ -47,7 +48,7 @@
               throw new RuntimeException(e);
           }
           
-          assertThat(a + b).isEqualTo(5);
+          assertThat(a + b).isEqualTo(5); // 테스트 성공
       }
   }
   
@@ -98,4 +99,79 @@
     ```
 
     - 이런식으로 형변환을 해서 반환 받게끔 메서드를 구현해서 사용한다.
+
       - 이러면 몇개를 빼든, 여러 타입을 빼든 이 메서드 하나로 전부 커버가 가능하다.
+
+        
+
+## 2. Private Method 접근 방법
+
+- ```java
+  public class Calculate {
+      private int add(int a, int b) {
+          return a + b;
+      }
+  }
+  
+  // ========================================= //
+  
+  class CalculateTest {
+      @Test
+      @DisplayName("더하기")
+      void add() {
+          Calculate calculate = new Calculate();
+          int sum = 0;
+          try {
+              // getDeclaredMethod 첫번째 인자에 메서드 이름, 두번째 인자부턴 메서드의 매개변수 타입을 순서대로 지정해준다.
+              Method method = calculate.getClass().getDeclaredMethod("add", int.class, int.class);
+              method.setAccessible(true); // 해당 메서드에 접근 가능하도록 설정
+              sum = (int) method.invoke(calculate, 3,4); // 해당 메서드를 인자 전달과 함께 호출하고, 값을 반환받는다.
+          } catch (NoSuchMethodException | InvocationTargetException | IllegalAccessException e) {
+              throw new RuntimeException(e);
+          }
+          
+          assertThat(sum).isEqualTo(7); // 테스트 성공
+      }
+  }
+  
+  // 테스트 성공
+  ```
+
+  - 여기도 마찬가지로 private 메서드를 여러개 호출할 때 코드가 지저분해진다.
+
+    - 그래서 내가 개인적으로 쓰는 방법이 있다.
+
+    - ```java
+      public class Calculate {
+          private int add(int a, int b) {
+              return a + b;
+          }
+      }
+      
+      // ===================================== //
+      
+      class CalculateTest {
+          @Test
+          @DisplayName("더하기")
+          void add() {
+              Calculate calculate = new Calculate();
+              int sum = (int) getPrivateMethodResult(calculate, "add", 3, 4);
+              assertThat(sum).isEqualTo(7);
+          }
+          
+          private Object getPrivateMethodResult(Object object, String methodName, int n1, int n2) {
+              try {
+                  Method method = object.getClass().getDeclaredMethod(methodName, int.class, int.class);
+                  method.setAccessible(true);
+                  return method.invoke(object, n1, n2);
+              } catch (NoSuchMethodException | InvocationTargetException | IllegalAccessException e) {
+                  throw new RuntimeException(e);
+              }
+          }
+      }
+      
+      // 테스트 성공
+      ```
+
+      - 이런식으로 같은 private method 나 같은 매개변수 타입과 순서를 가진 메서드를 추가로 호출할 때, 형변환 해서 갖다 쓸 수 있도록 구현한다.
+
