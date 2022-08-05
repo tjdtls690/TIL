@@ -1,6 +1,8 @@
 # 목차
 
 1. [반복문](#1-반복문) <br/>
+2. [Arrays.asList()](#2-arraysaslist) <br/>
+3. [Stream 의 최종연산자 - collect()](#3-stream-의-최종연산자---collect) <br/>
 
 <br/>
 
@@ -56,7 +58,66 @@
 
 ## 2. Arrays.asList()
 
+- 이 방법은 주의할 점이, <code><strong>Arrays.asList()의 인자에는 int[] 가 아닌 Integer[] 로 변환 후 넣어줘야 한다.</strong></code>
 
+  - 그래서 int[] 에서 Integer[] 로 처음에 변환하는 과정이 한 번 더 필요하다.
+  - 변환하지 않는다면 List<int[]> 타입으로 반환을 받게 된다.
 
-## 3. Stream 의 최종연산자 -  collect()
+- **개인적으로 이유가 무엇일까 생각해봤다.**
 
+  - 사실 List 의 요소에 기본타입은 들어가지 못한다는 것을 알고있다면, 당연한 부분이기도 하다.
+    - 그래서 객체만이 List 의 요소타입이 될 수 있다는 사실을 알고있다면,
+    - int 타입으로 리스트를 반환받으려할 때 왜 자꾸 int[] 로 객체화해서 지정되는지 이해가 되는 것 같다.
+    - 기본타입 int 와는 다르게 int[] 배열은 주소값을 가진 하나의 객체와 같으니 말이다.
+
+- 예제
+
+  - ```java
+    class Scratch {
+        public static void main(String[] args) {
+            int[] num = {1, 1, 3, 3, 5, 6, 6};
+            List<Integer> integers = Arrays.asList(Arrays.stream(num).boxed().toArray(Integer[]::new));
+            System.out.println(integers);
+        }
+    }
+    
+    // 출력 결과
+    // [1, 1, 3, 3, 5, 6, 6]
+    
+    
+    // 위의 코드를 좀 더 이해하기 쉽게 풀어서 써보자면
+    
+    class Scratch {
+        public static void main(String[] args) {
+            int[] num = {1, 1, 3, 3, 5, 6, 6};
+            Integer[] integers1 = Arrays.stream(num).boxed().toArray(Integer[]::new);
+            List<Integer> integers2 = Arrays.asList(integers1);
+            System.out.println(integers2);
+        }
+    }
+    ```
+
+    
+
+## 3. Stream 의 최종연산자 - collect()
+
+- 사실 속도는 잘 모르겠지만 이 방법이 가장 깔끔한 방법이라고 생각한다.
+
+  - 최종 연산자 collect() 메서드에 Collectors.toList() 를 인자로 전달하여 List 를 반환받는 방법이다.
+
+- 예제
+
+  - ```java
+    class Scratch {
+        public static void main(String[] args) {
+            int[] num = {1, 1, 3, 3, 5, 6, 6};
+            List<Integer> integers = Arrays.stream(num).boxed().collect(Collectors.toList());
+            System.out.println(integers);
+        }
+    }
+    
+    // 출력 결과
+    // [1, 1, 3, 3, 5, 6, 6]
+    ```
+
+    
