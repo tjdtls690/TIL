@@ -35,6 +35,7 @@
 - [AssertJ 의 개념 및 기초 사용법](https://bit.ly/3vyh8m5)
 - [JUnit - private 변수, 메서드 테스트하기](https://bit.ly/3SmX4gc)
 - [int[] 배열을 List 로 변환시키는 방법](https://bit.ly/3OZUREs)
+- [Collectors.toSet() - 중복 제거](https://bit.ly/3ddJfAR)
 
 ## [Algorithm](https://bit.ly/3NodNwd)
 - [재귀함수](https://bit.ly/3yameqc)
