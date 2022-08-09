@@ -4,6 +4,7 @@
 2. [sorted() 의 사용법](#2-sorted-의-사용법) <br/>
     1. [객체 비교](#2-1-객체-비교) <br/>
     2. [커스텀(자신이 정한) 정렬 키로 비교하기](#2-2-커스텀자신이-정한-정렬-키로-비교하기) <br/>
+    3. [내림차순(반대)으로 정렬](#2-3-내림차순반대으로-정렬) <br/>
 
 <br/>
 
@@ -115,4 +116,100 @@
     // [cac, aba, bca]
     ```
 
+    
+
+### 2-3. 내림차순(반대)으로 정렬
+
+1. #### String 문자열의 문자들을 역순으로 정렬
+
+   - Comparator.reverseOrder() 를 인자로 주면 역정렬
+     		- Comparator.reverseOrder() 는 Comparable 인터페이스를 반환한다.
+
+   - 예제
+
+     - ```java
+       class Scratch {
+           public static void main(String[] args) {
+               String s = "dafaafq";
+               String collect = Stream.of(s.split(""))
+                       .sorted(Comparator.reverseOrder())
+                       .collect(Collectors.joining());
+               System.out.println(collect);
+           }
+       }
+       
+       // 출력 결과
+       // qffdaaa
+       ```
+
+     - **예제 설명**
+
+       1. 스트림에 문자열의 문자들을 하나씩 풀어서 넣어준다.
+
+       2. 역순 정렬
+
+       3. 다시 전부 합쳐서 String으로 반환 (joining 메서드에 인자가 하나도 없으면 그대로 붙여서 반환)
+          - Collectors.joining() 은 인자를 사이사이에 이어 붙여서 String 으로 반환해준다.
+
+            
+
+2. #### 기본타입 배열을 역순으로 정렬
+
+   - Stream 의 sorted() 메서드에서 Comparator.reverseOrder() 를 통해 역순정렬을 하는 것은, **객체 형태의 배열만 가능**하다.
+     	- 그래서 기본타입 배열을 Comparator.reverseOrder() 를 통해 역순정렬 하려면 **래퍼클래스로 포장해서 정렬**해야한다.
+
+   - 예시
+
+     - ```java
+       class Scratch {
+           public static void main(String[] args) {
+               int[] A = {5, 3, 2, 4, 1};
+               Integer[] tmp = Arrays.stream(A)
+                       .boxed()
+                       .sorted(Comparator.reverseOrder())
+                       .toArray(Integer[]::new);
+               System.out.println(Arrays.toString(tmp));
+           }
+       }
+       
+       // 출력 결과
+       // [5, 4, 3, 2, 1]
+       ```
+
+     - **설명**
+
+       1. 스트림에 기본타입 숫자들을 풀어서 넣어준다.
+
+       2. 래퍼클래스인 Integer 로 하나씩 포장한다.
+
+       3. 역순으로 정렬한다.
+
+       4. Integer[] 타입으로 역순 정렬된 배열을 반환한다.
+
+          
+
+     - **만약 여기서 역순 정렬된 배열을 Integer[] 타입이 아닌 int[] 타입으로 반환받고 싶다면,**
+
+       - ```java
+         class Scratch {
+             public static void main(String[] args) {
+                 int[] A = {5, 3, 2, 4, 1};
+                 int[] ints = Arrays.stream(A)
+                         .boxed()
+                         .sorted(Comparator.reverseOrder())
+                         .mapToInt(Integer::intValue)
+                         .toArray();
+                 System.out.println(Arrays.toString(ints));
+             }
+         }
+         
+         // 출력 결과
+         // [5, 4, 3, 2, 1]
+         ```
+
+       - **설명**
+
+         1. Integer 값들을 sorted 로 역순 정렬한다.
+         2. mapToInt() 에 Integer::intValue 메서드를 줘서 int 타입으로 하나씩 변환시켜서 IntStream 을 반환받는다.
+         3. IntStream 의 toArray() 을 통해 int[] 로 반환받는다.
     
