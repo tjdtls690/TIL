@@ -7,7 +7,7 @@
 
 <br/>
 
-# [자바, Java] Stream - Collectors.joining() 에 대해
+# [자바, Java] Stream - Collectors.joining()
 
 <br/>
 
