@@ -38,6 +38,7 @@
 - [Collectors.toSet() - 중복 제거](https://bit.ly/3ddJfAR)
 - [Stream 의 중간연산자 sorted()](https://bit.ly/3JEI1ug)
 - [Stream - Collectors.joining()](https://bit.ly/3bNARHR)
+- [Lombok - cannot find symbol 에러 해결 방법](https://bit.ly/3AjsYU1)
 
 ## [Algorithm](https://bit.ly/3NodNwd)
 - [재귀함수](https://bit.ly/3yameqc)
