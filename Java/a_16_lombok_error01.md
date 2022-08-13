@@ -3,6 +3,7 @@
 1. [lombok 이란??](#1-lombok-이란) <br/>
 2. [내 문제가 일어났던 이유](#2-내-문제가-일어났던-이유) <br/>
 3. [어노테이션 프로세서란??](#3-어노테이션-프로세서란) <br/>
+4. [어노테이션 프로세서 문제 해결 방법](#4-어노테이션-프로세서-문제-해결-방법) <br/>
 
 <br/>
 
@@ -62,4 +63,21 @@
 
 - **컴파일 시점에 끼어들어 특정한 애노테이션이 붙어있는 소스코드를 참조해서 새로운 소스코드를 만들어 낼 수 있는 기능이다.**
   - 컴파일 단계에서 실행되기 때문에, 빌드 단계에서 에러를 출력하게 할 수 있고, 소스코드 및 바이트 코드를 생성할 수도 있다.
+
   - 결국 롬복을 사용하기 위해선 설정해줘야 하는 요소이다.
+
+    
+
+## 4. 어노테이션 프로세서 문제 해결 방법
+
+- 1단계 : **롬복 라이브러리 추가**
+- 2단계 : **Annotation Processor 설정**
+  1. 인텔리제이의 빌드, 테스트 실행 설정이 <code><strong>'gradle'</strong></code> 로 되어있는 경우 (1가지 방법)
+     - gradle 빌드 코드에 annotationProcessor 'org.projectlombok:lombok:1.18.24' 추가
+  2. 인텔리제이의 빌드, 테스트 실행 설정이 <code><strong>'IntelliJ IDEA'</strong></code> 로 되어있는 경우 (2가지 방법)
+     - 1번째 방법 : annotationProcessor 'org.projectlombok:lombok:1.18.24' - 위와 동일
+     - 2번째 방법 : 설정 -> 빌드, 실행, 배포 -> 컴파일러 -> 어노테이션 프로세서 -> 어노테이션 처리 활성화 체크
+
+
+
+<span style = " font-size:1.5em; color: red; font-weight: bold; ">결론은 annotationProcessor 'org.projectlombok:lombok:1.18.24' 를 빌드에 추가해주는 것이 가장 좋겠다고 정해졌다.</span>
