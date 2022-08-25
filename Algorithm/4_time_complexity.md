@@ -70,7 +70,7 @@
 
      - 그러나 컴퓨터의 연산은 굉장히 빠르기 때문에 O(5) 나 O(1) 이나 차이가 없다. 
 
-     - 즉, <code><strong>O(상수) 는 전부 O(1) 로 봐야한다는 것이다.</strong></code>
+     - 즉, <code><strong>시간복잡도 O(상수) 는 전부 O(1) 로 봐야한다는 것이다.</strong></code>
 
        
 
@@ -99,7 +99,7 @@
        - 이유는 n 은 사용자로부터 어떤 숫자를 입력받을지 전혀 모르는 상황이다.
        - 결국 n 에 굉장히 큰 수가 올 가능성도 있다는 것이다.
 
-     - 즉, <code><strong>이 예제는 상수를 제외하고 O(n) 으로 봐야한다는 것이다.</strong></code>
+     - 즉, <code><strong>이 예제의 시간복잡도는 상수를 제외하고 O(n) 으로 봐야한다는 것이다.</strong></code>
 
        
 
@@ -133,8 +133,67 @@
 
        - 이유는 n제곱에 비하면 n 은 굉장히 작은 숫자에 불과하기 때문이다.
 
-     - 즉, <code><strong>이 예제는 n을 제외하고 O(n제곱) 으로 봐야한다는 것이다.</strong></code>
+     - 즉, <code><strong>이 예제의 시간복잡도는 n을 제외하고 O(n제곱) 으로 봐야한다는 것이다.</strong></code>
 
        
 
 4. ### O(n(n + 1) / 2) == O(n제곱)
+
+   - ```java
+     class Scratch {
+         public static void main(String[] args) throws IOException {
+             BufferedReader br = new BufferedReader(new InputStreamReader((System.in)));
+         
+             int n = Integer.parseInt(br.readLine());
+             int sum = 0;
+             
+             for (int i = 0; i < n; i++) {
+                 for (int j = i; j < n; j++) {
+                     sum += i * j;
+                 }
+             }
+         
+             System.out.println(sum);
+         }
+     }
+     ```
+
+     - 이 예제는 공차가 1인 **등차수열의 합**만큼 연산을 한다.
+
+       - 반복문 외의 다른 연산들은 어차피 상수이기에 시간복잡도에 영향력이 거의 없다. 때문에 제외한다.
+
+     - 공차가 1인 **등차수열의 공식은 n(n + 1) / 2** 이다.
+
+       - 따라서 시간복잡도는 **O(n(n + 1) / 2)**  인데, 풀어서 쓰면 **(n제곱 + n) / 2** 이다.
+
+     - 이 중에서 가장 영향력이 큰 것은 **n제곱**이다.
+
+     - 즉, <code><strong>이 예제의 시간복잡도는 분모 2 와 분자 n 을 제외하고 O(n제곱) 으로 봐야한다는 것이다.</strong></code>
+
+       
+
+5. ### 시간복잡도는 항상 최악을 가정하고 산정한다.
+
+   - ```java
+     class Scratch {
+         public static void main(String[] args) throws IOException {
+             BufferedReader br = new BufferedReader(new InputStreamReader((System.in)));
+         
+             int n = Integer.parseInt(br.readLine());
+             
+             for (int i = 0; i < n; i++) {
+                 if (i * i == n) {
+                     System.out.println(i);
+                     break;
+                 }
+             }
+         }
+     }
+     ```
+
+     - 이 예제는 반복문에서 최대 n번까지 도는 중, **if문 조건에 빨리 부합 할수록 빨리 종료되어 연산 횟수가 줄어들게 된다.**
+     - 그러나 시간복잡도의 계산은 **항상 최악을 가정하고 계산**한다.
+     - 여기서 <code><strong>최악</strong></code>은 정말 운이 드럽게 없어서 **if 문에 한번도 부합하지 않고 반복문을 n번 전부 돌았을 때**이다.
+     - 즉, <code><strong>이 예제의 시간복잡도는 O(n) 으로 봐야한다는 것이다.</strong></code>
+
+
