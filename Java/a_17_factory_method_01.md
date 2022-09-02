@@ -94,7 +94,7 @@
 
     - 이처럼 직접적으로 생성자를 통해 객체를 생성하는 것이 아닌 메서드를 통해서 객체를 생성하는 것을 **'팩토리 메서드 패턴'**이라고 한다.
 
-
+<br/>
 
 ## 2. 생성자가 있는데 왜 굳이 팩토리 메서드 패턴을 쓸까??
 
@@ -112,12 +112,238 @@
   4. **이름을 부여할 수 있다.**
      - 팩토리 메서드의 이름을 통해 어떤 종류의 객체 생성 메서드인지 알고 사용할 수 있다.
 
-
+<br/>
 
 ## 3. 팩토리 메서드 구현방법 2가지
 
 1. **Factory 클래스와 Product 클래스 둘 다 확장을 하는 방식의 팩토리 패턴**
-   - Product 생성의 책임을 갖는 Factory 영역과 제품 그 자체인 Product 영역, 두 영역 전부 인터페이스를 두고 제품을 확장해나가는 형식
+   - Product 생성의 책임을 갖는 Factory 영역과 제품 그 자체인 Product 영역, 두 영역 전부 인터페이스를 두고 제품을 확장해나가는 형식이다.
+   
+     - 그리고 고객 입장에서 각 제품의 Factory 를 통해서 제품을 제공받는다.
+   
+   - 다이어그램으로 구조를 살펴보면 좀 더 이해가 갈 것이다.
+   
+     - ![notion_img01](https://tjdtls690.github.io/assets/img/github_img/factory_method01.PNG)
+   
+       <br/>
+   
+   - 예제
+   
+     - ```java
+       // 고객 입장에서 제품을 주문하고, 완성된 제품을 받는 곳.
+       public class Client {
+           public static void main(String[] args) {
+               printHouseInform(new WhiteHouseFactory());
+           }
+           
+           private static void printHouseInform(HouseFactory houseFactory) {
+               System.out.println(houseFactory.create());
+           }
+       }
+       
+       // 출력 결과
+       // House{name='WhiteHouse', color='white'}
+       ```
+   
+     - ```java
+       // Factory 영역의 인터페이스
+       public interface HouseFactory {
+           House create();
+       }
+       
+       // Product 영역의 인터페이스 역할을 맡은 부모 클래스
+       public class House {
+           private String name;
+           private String color;
+           
+           public House(String name, String color) {
+               this.name = name;
+               this.color = color;
+           }
+           
+           @Override
+           public String toString() {
+               return "House{" +
+                       "name='" + name + '\'' +
+                       ", color='" + color + '\'' +
+                       '}';
+           }
+       }
+       ```
+   
+     - ```java
+       // 화이트 색상의 집을 만드는 Factory
+       public class WhiteHouseFactory implements HouseFactory {
+           @Override
+           public House create() {
+               return new WhiteHouse();
+           }
+       }
+       
+       // 화이트 색상의 집 (Product)
+       public class WhiteHouse extends House {
+           public WhiteHouse() {
+               super("WhiteHouse", "white");
+           }
+       }
+       ```
+   
+       <br/>
+   
+     - 팩토리 메서드의 가치는, 현 상태에서 블랙 색상의 집을 추가제작 (확장) 하려고 할 때, Client 의 주문부분만 제외하고 변경하는 코드가 일절 없다.
+   
+       - 개방폐쇄의 원칙이 지켜지는 모습이다.
+   
+       - ```java
+         public class Client {
+             public static void main(String[] args) {
+                 printHouseInform(new WhiteHouseFactory());
+                 printHouseInform(new BlackHouseFactory()); // 새로운 제품을 제작 요청하는 한 줄 추가
+             }
+             
+             private static void printHouseInform(HouseFactory houseFactory) {
+                 System.out.println(houseFactory.create());
+             }
+         }
+         
+         // 출력 결과
+         // House{name='WhiteHouse', color='white'}
+         // House{name='BlakHouse', color='black'}
+         ```
+   
+       - ```java
+         // 블랙 색상의 집을 만드는 Factory
+         public class BlackHouseFactory implements HouseFactory {
+             @Override
+             public House create() {
+                 return new BlackHouse();
+             }
+         }
+         
+         // 블랙 색상의 집 (Product)
+         public class BlackHouse extends House{
+             public BlackHouse() {
+                 super("BlakHouse", "black");
+             }
+         }
+         ```
+   
+       - 기존 코드를 변경하지 않고, 확장함으로써 새로운 제품이 추가된 모습을 볼 수 있다.
+   
+     
+   
+   <br/>
+   
 2. **사용자로부터 입력받은 문자열 즉, 매개변수의 값에 따라 각기 다른 객체를 생성하는 팩토리 패턴**
-   - 심플 팩토리 메서드 패턴 (Simple Factory Method Pattern)
-   - 1번 패턴과는 다르게, 팩토리 영역은 확장하지 않는 더 단순화된 패턴이다.
+   - 심플 팩토리 메서드 패턴 (Simple Factory Method Pattern) 라고도 부른다.
+   
+     - 1번 패턴과는 다르게, 팩토리 영역은 확장하지 않는 더 단순화된 패턴이다.
+     - <br/>
+   - 예제
+   
+     - ```java
+       // 고객 입장에서 제품을 주문하고, 완성된 제품을 받는 곳.
+       public class Client {
+           public static void main(String[] args) {
+               printHouseInform(HouseFactory.from("WhiteHouse"));
+           }
+           
+           private static void printHouseInform(House house) {
+               System.out.println(house);
+           }
+       }
+       
+       // 출력 결과
+       // House{name='WhiteHouse', color='white'}
+       ```
+   
+     - ```java
+       // 팩토리 메서드
+       public class HouseFactory {
+           public static House from(String houseName) throws IllegalArgumentException{
+               if (houseName.equals("WhiteHouse")) {
+                   return new WhiteHouse();
+               }
+               
+               throw new IllegalArgumentException("해당 제품이 존재하지 않습니다.");
+           }
+       }
+       ```
+   
+     - ```java
+       // Product 영역의 인터페이스 역할을 맡은 부모 클래스
+       public class House {
+           private String name;
+           private String color;
+           
+           public House(String name, String color) {
+               this.name = name;
+               this.color = color;
+           }
+           
+           @Override
+           public String toString() {
+               return "House{" +
+                       "name='" + name + '\'' +
+                       ", color='" + color + '\'' +
+                       '}';
+           }
+       }
+       
+       // 화이트 색상의 집 (Product)
+       public class WhiteHouse extends House {
+           public WhiteHouse() {
+               super("WhiteHouse", "white");
+           }
+       }
+       ```
+   
+       <br/>
+   
+     - 여기서 추가 제품을 확장하고 싶을 땐, 팩토리 메서드의 조건 하나와 클라이언트의 주문부분 한 줄이 추가되는 것 외엔 변경되는 코드는 없다.
+   
+       - ```java
+         public class Client {
+             public static void main(String[] args) {
+                 printHouseInform(HouseFactory.from("WhiteHouse"));
+                 printHouseInform(HouseFactory.from("BlackHouse")); // 새로운 제품을 주문하기 위해 한 줄 추가
+             }
+             
+             private static void printHouseInform(House house) {
+                 System.out.println(house);
+             }
+         }
+         
+         // 출력 결과
+         // House{name='WhiteHouse', color='white'}
+         // House{name='BlackHouse', color='black'}
+         ```
+   
+       - ```java
+         // 팩토리 메서드
+         public class HouseFactory {
+             public static House from(String houseName) throws IllegalArgumentException{
+                 if (houseName.equals("WhiteHouse")) {
+                     return new WhiteHouse();
+                 }
+                 
+                 if (houseName.equals("BlackHouse")) { // 새로운 제품 생성을 위한 조건식 하나 추가
+                     return new BlackHouse();
+                 }
+                 
+                 throw new IllegalArgumentException("해당 제품이 존재하지 않습니다.");
+             }
+         }
+         
+         
+         // 블랙 색상의 집 (Product)
+         public class BlackHouse extends House {
+             public BlackHouse() {
+                 super("BlackHouse", "black");
+             }
+         }
+         ```
+   
+         <br/>
+   
+       - 새로운 제품이 추가될 때마다, 팩토리 메서드만 신경써주고 그 외엔 확장만 해주면 되기에 유지보수에 굉장히 용이하다.
