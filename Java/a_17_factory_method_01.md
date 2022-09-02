@@ -238,7 +238,14 @@
    - 심플 팩토리 메서드 패턴 (Simple Factory Method Pattern) 라고도 부른다.
    
      - 1번 패턴과는 다르게, 팩토리 영역은 확장하지 않는 더 단순화된 패턴이다.
-     - <br/>
+   
+   - 다이어그램
+   
+     - ![notion_img01](https://tjdtls690.github.io/assets/img/github_img/factory_method02.PNG)
+     - 1번 예제와 다르게 Factory 영역을 팩토리 메서드 하나로 관리하는 모습을 볼 수 있다.
+   
+     <br/>
+   
    - 예제
    
      - ```java
