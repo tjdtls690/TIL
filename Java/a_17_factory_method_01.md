@@ -123,7 +123,7 @@
    
    - 다이어그램으로 구조를 살펴보면 좀 더 이해가 갈 것이다.
    
-     - ![notion_img01](https://tjdtls690.github.io/assets/img/github_img/factory_method01.PNG)
+     - ![factory_method_img01](https://tjdtls690.github.io/assets/img/github_img/factory_method01.PNG)
    
        <br/>
    
@@ -241,7 +241,7 @@
    
    - 다이어그램
    
-     - ![notion_img01](https://tjdtls690.github.io/assets/img/github_img/factory_method02.PNG)
+     - ![factory_method_img02](https://tjdtls690.github.io/assets/img/github_img/factory_method02.PNG)
      - 1번 예제와 다르게 Factory 영역을 팩토리 메서드 하나로 관리하는 모습을 볼 수 있다.
    
      <br/>
