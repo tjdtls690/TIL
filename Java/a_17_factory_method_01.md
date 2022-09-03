@@ -354,3 +354,10 @@
          <br/>
    
        - 새로운 제품이 추가될 때마다, 팩토리 메서드만 신경써주고 그 외엔 확장만 해주면 되기에 유지보수에 굉장히 용이하다.
+       
+         <br/>
+
+## Reference
+
+- [인프런 - 코딩으로 학습하는 GoF의 디자인 패턴 : 백기선님](https://www.inflearn.com/course/%EB%94%94%EC%9E%90%EC%9D%B8-%ED%8C%A8%ED%84%B4)
+- [GOF 의 디자인 패턴 - 에릭 감마(Erich Gamma), 리차드 헬름(Richard Helm), 랄프 존슨(Ralph Johnson), 존 블리시데스(John Vlissides)](http://www.kyobobook.co.kr/product/detailViewKor.laf?mallGb=KOR&ejkGb=KOR&barcode=9791195444953)
