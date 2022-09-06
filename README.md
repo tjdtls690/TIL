@@ -41,6 +41,7 @@
 - [Lombok - cannot find symbol 에러 해결 방법](https://bit.ly/3AjsYU1)
 - [디자인 패턴 - 팩토리 메서드 패턴](https://bit.ly/3cyR5oC)
 - [디자인 패턴 - 추상 팩토리 패턴](https://bit.ly/3THRNkc)
+- [디자인 패턴 - 싱글톤 패턴](https://bit.ly/3KS2lJf)
 
 ## [Algorithm](https://bit.ly/3NodNwd)
 - [재귀함수](https://bit.ly/3yameqc)
