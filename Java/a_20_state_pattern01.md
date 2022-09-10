@@ -2,6 +2,7 @@
 
 1. [상태 패턴이란??](#1-상태-패턴이란) <br/>
 2. [상태 패턴을 쓰는 이유](#2-상태-패턴을-쓰는-이유) <br/>
+2. [상태 패턴 학습 구현](#3-상태-패턴-학습-구현) <br/>
 
 <br/>
 
@@ -51,3 +52,215 @@
    - 다른 상태가 추가가 된다고 해도, 기존의 코드는 변경하지 않고 확장이 가능해진다.
 
      <br/>
+
+## 3. 상태 패턴 학습 구현
+
+- 먼저 어떤 프로그램을 상태 패턴을 통해 구현할 것인지 설계해보았다.
+
+  1. 호텔이 있다.
+  2. 호텔을 이용하려면 먼저 고객이 호텔로부터 티켓을 받아야 한다.
+  3. 호텔의 상태는 총 3가지가 존재한다.
+     1. **Draft : 고객이 아직 없어서 운영을 안하는 상태.**
+        - 티켓이 있든 없든 고객은 받을 수 있는 상태
+        - 리뷰 작성이 불가능한 상태
+     2. **Published : 고객이 한 명이 들어와서 운영을 막 시작한 상태**
+        - 티켓이 있든 없든 고객은 받을 수 있는 상태
+        - 호텔을 이용하지 않더라도 모두 리뷰 작성이 가능한 상태
+     3. **Private : 호텔을 이용하는 고객이 2명 이상이 되어 보안을 지키기 시작한 상태**
+        - 티켓을 받은 사람만 호텔을 이용할 수 있는 상태
+        - 호텔을 이용하고 있는 사람만 리뷰 작성이 가능한 상태
+
+- 예제
+
+  - ```java
+    // 호텔
+    public class Hotel {
+        private State state;
+        private final Set<Client> clients;
+        private final Set<String> reviews;
+        
+        public Hotel() {
+            // 호텔은 고객이 한 명도 없는 Draft 상태에서 시작
+            this.state = new Draft(this);
+            this.clients = new HashSet<>();
+            this.reviews = new HashSet<>();
+        }
+        
+        public void addClient(Client client) {
+            this.state.addClient(client);
+        }
+        
+        public void addReview(Client client, String review) {
+            this.state.addReview(client, review);
+        }
+        
+        public void changeState(State state) {
+            this.state = state;
+        }
+        
+        public Set<Client> getClients() {
+            return clients;
+        }
+        
+        public Set<String> getReviews() {
+            return reviews;
+        }
+        
+        public State getState() {
+            return state;
+        }
+    }
+    ```
+    
+  - ```java
+    // 고객
+    public class Client {
+        private final String name;
+        private final Set<Hotel> hotels;
+        
+        public Client(String name) {
+            this.name = name;
+            this.hotels = new HashSet<>();
+        }
+        
+        public void addPrivate(Hotel hotel) {
+            this.hotels.add(hotel);
+        }
+        
+        
+        public boolean isAvailable(Hotel hotel) {
+            return hotels.contains(hotel);
+        }
+        
+        @Override
+        public String toString() {
+            return "Client{" +
+                    "name='" + name +
+                    '}';
+        }
+    }
+    ```
+  
+  - ```java
+    // 모든 상태 객체를 관리하는 인터페이스
+    public interface State {
+        void addClient(Client client);
+        void addReview(Client client, String review);
+    }
+    ```
+  
+  - ```java
+    // Draft 상태
+    public class Draft implements State {
+        private final Hotel hotel;
+        
+        public Draft(Hotel hotel) {
+            this.hotel = hotel;
+        }
+        
+        @Override
+        public void addClient(Client client) {
+            hotel.getClients().add(client);
+            if (hotel.getClients().size() > 0) {
+                hotel.changeState(new Published(hotel));
+            }
+        }
+        
+        @Override
+        public void addReview(Client client, String review) {
+            throw new UnsupportedOperationException("해당 호텔은 고객이 0명이기 때문에 리뷰를 하실 수 없습니다.");
+        }
+    }
+    
+    
+    // Published 상태
+    public class Published implements State {
+        private final Hotel hotel;
+        
+        public Published(Hotel hotel) {
+            this.hotel = hotel;
+        }
+        
+        @Override
+        public void addClient(Client client) {
+            hotel.getClients().add(client);
+            if (hotel.getClients().size() > 1) {
+                hotel.changeState(new Private(hotel));
+            }
+        }
+        
+        @Override
+        public void addReview(Client client, String review) {
+            hotel.getReviews().add(review);
+        }
+    }
+    
+    
+    
+    
+    // Private 상태
+    public class Private implements State {
+        private final Hotel hotel;
+        
+        public Private(Hotel hotel) {
+            this.hotel = hotel;
+        }
+        
+        @Override
+        public void addClient(Client client) {
+            if (client.isAvailable(hotel)) {
+                hotel.getClients().add(client);
+                return;
+            }
+            
+            throw new UnsupportedOperationException("호텔을 이용하실 수 없습니다.");
+        }
+        
+        @Override
+        public void addReview(Client client, String review) {
+            if (hotel.getClients().contains(client)) {
+                hotel.getReviews().add(review);
+                return;
+            }
+            
+            throw new UnsupportedOperationException("리뷰를 하실 수 없습니다.");
+        }
+    }
+    ```
+  
+  - ```java
+    // 메인 메서드
+    public class Main {
+        public static void main(String[] args) {
+            Hotel hotel = new Hotel();
+            Client jun = new Client("jun");
+            Client young = new Client("young");
+            Client sin = new Client("sin");
+            
+            // Draft 상태에선 리뷰 작성 불가능
+    //      hotel.addReview(sin, "hello");
+            
+            hotel.addClient(jun); // 고객이 한 명 늘어서 Published 상태로 변경
+            hotel.addReview(sin, "hello"); // Published 상태에선 호텔을 이용하지 않는 고객도 리뷰 작성 가능
+            
+            hotel.addClient(young); // 고객이 두 명 이상이 되어서 Private 상태로 변경
+            hotel.addReview(young, "nice!!"); // Private 상태에서 호텔을 이용하는 고객은 리뷰 작성 가능
+    
+            sin.addPrivate(hotel); // Private 상태이기 때문에 티켓 발급부터 받아야 한다.
+            hotel.addClient(sin); // Private 상태에서 티켓을 발급 받은 고객은 호텔 이용 가능
+            hotel.addReview(sin, "hi~"); // Private 상태에서 호텔을 이용중인 고객은 리뷰 작성 가능
+            
+        
+            System.out.println(hotel.getClients()); // 현재 호텔을 이용중인 모든 고객 출력
+            System.out.println(hotel.getReviews()); // 현재 작성된 모든 호텔의 리뷰 출력
+            System.out.println(hotel.getState().getClass().getSimpleName()); // 현재 호텔의 상태 출력
+        }
+    }
+    
+    // 출력 결과
+    // [Client{name='young}, Client{name='sin}, Client{name='jun}]
+    // [nice!!, hello, hi~]
+    // Private
+    ```
+    
+    
