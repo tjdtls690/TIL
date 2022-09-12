@@ -43,6 +43,7 @@
 - [디자인 패턴 - 추상 팩토리 패턴](https://bit.ly/3THRNkc)
 - [디자인 패턴 - 싱글톤 패턴](https://bit.ly/3KS2lJf)
 - [디자인 패턴 - 상태 패턴](https://bit.ly/3qqYJEG)
+- [디자인 패턴 - 전략 패턴](https://bit.ly/3BsyK5d)
 
 ## [Algorithm](https://bit.ly/3NodNwd)
 - [재귀함수](https://bit.ly/3yameqc)
