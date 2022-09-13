@@ -2,6 +2,8 @@
 
 1. [전략 패턴이란??](#1-전략-패턴이란) <br/>
 2. [전략 패턴을 쓰는 이유](#2-전략-패턴을-쓰는-이유) <br/>
+3. [전략 패턴 학습 구현](#3-전략-패턴-학습-구현) <br/>
+4. [자바 JDK에서 사용되는 전략 패턴](#4-자바-jdk에서-사용되는-전략-패턴) <br/>
 
 <br/>
 
@@ -32,26 +34,46 @@
 
    - **만약 전략 패턴을 쓰지 않는다면,**
 
-     1. 커피를 만드는 기계를 설계한다.
-     2. 종류는 아메리카노, 카페라뗴, 카페모카 3가지이다.
-     3. 여기서 온도 3가지 (따뜻한, 차가운, 미지근한) 을 추가한다.
-        - 따뜻한 아메리카노, 아이스 아메리카노, 미지근한 아메리카노, 따뜻한 카페라떼......
-     4. 여기서 샷 추가 3가지(1샷, 2샷, 3샷) 를 추가한다.
-        - 따뜻한 아메리카노 1샷, 따뜻한 아메리카노 2샷, 따뜻한 아메리카노 3샷, 아이스 아메리카노 2샷 ......
-     5. 종류(객체)가 기하급수적으로 늘어난다.
-        - 3 x 3 x 3 = 27
-        - 이 정도의 종류만 추가해도 **클래스가 27개**로 늘어나버린다.
-     6. 어떤 종류의 커피가 필요할 때, 27개의 객체중 하나를 찾아서 써야한다.
+     1. 어떤 한 로봇이 서 있다.
+        - 서있는 로봇 객체를 만든다.
+     2. 로봇이 뛴다.
+        - 뛰는 로봇 객체를 만든다.
+     3. 여기서 로봇에 감정을 추가하게 된다.
+     4. 뛰는 로봇이 행복해졌다.
+        - 행복한 뛰는 로봇 객체를 만든다.
+     5. 다시 로봇이 걸으면서 감정이 상했다.
+        - 화난 걷는 로봇 객체를 만든다.
+     6. 객체가 기하 급수적으로 늘어난다...
 
    - **만약 전략 패턴을 적용한다면,**
 
-     - 종류, 온도, 샷 추가를 필요한 커피가 생길 때마다 그에 맞는 객체를 하나씩 꺼내서 조합한다.
+     1. 어떤 한 로봇이 서 있다.
 
-     - 필요할 때마다 조합이 가능하니, 각 종류를 담당할 **인터페이스 3개, 클래스는 총 9개가 필요**하다.
-
-     - 객체의 숫자와 복잡성이 훨씬 줄어들고, 운영 방법도 훨씬 유연해진다.
-
-       <br/>
+        - 행동 인터페이스를 생성해서 행동 영역을 묶고, '서있다' 객체를 만든다.
+        - 로봇 객체에 '서있다' 객체를 넣어서 행동방식을 바꾼다.
+     
+     2. 로봇이 뛴다.
+     
+        - '뛴다' 객체를 만든다.
+        - 로봇 객체에 '뛴다' 객체를 넣어서 행동방식을 바꾼다.
+     
+     3. 여기서 로봇에 감정을 추가하게 된다.
+     
+     4. 뛰는 로봇이 행복해졌다.
+     
+        - 감정 인터페이스를 생성해서 감정 영역을 묶고, '행복한' 객체를 만든다.
+        - 로봇 객체에 '행복한' 객체를 넣어서 감정을 바꾼다.
+     
+     5. 다시 로봇이 걸으면서 감정이 상했다.
+     
+        - 감정 인터페이스를 생성해서 감정 영역을 묶고, '화난' 객체를 만든다.
+        - 로봇 객체에 '화난' 객체를 넣어서 감정을 바꾼다.
+     
+     6. 각자에 해당하는 감정 및 행동 객체를 만들어서 로봇의 변화에 따라 교체만 해주면 된다.
+     
+        - **전략 패턴을 사용하지 않을 때보다 객체의 수가 훨씬 줄어들고 유지보수성이 좋아진다.**
+     
+        <br/>
 
 2. **OCP (개방폐쇄의 원칙)** : 변경엔 닫혀있고 확장엔 열려있는 객체지향 원칙이 실현된다.
 
@@ -64,8 +86,157 @@
    - **상속의 단점**
      1. 상속은 단 한 개의 클래스만 상속할 수 있기에, 나중에 진짜 상속해야할 클래스가 생길때 상속을 못한다.
      2. 상위 클래스가 바뀌면 하위 클래스들도 모조리 영향을 받기에, 종속성 측면에서의 단점이 있다.
-   - 위임의 장점
+   - **위임의 장점**
      1. 해당 Context 클래스가 변경되더라도, 전략 영역은 전혀 영향을 받지 않는다.
         - 밑의 예제 참고
 
 <br/>
+
+## 3. 전략 패턴 학습 구현
+
+- **예제 - 로봇 설계**
+
+  - ```java
+    // 로봇
+    public class Robot {
+        private MoveStrategy moveStrategy;
+        private EmotionStrategy emotionStrategy;
+        
+        public Robot(MoveStrategy moveStrategy, EmotionStrategy emotionStrategy) {
+            this.moveStrategy = moveStrategy;
+            this.emotionStrategy = emotionStrategy;
+        }
+        
+        public void robotExplain() {
+            moveStrategy.move();
+            emotionStrategy.emotion();
+            System.out.println("로봇");
+        }
+        
+        public void changeMoveStrategy(MoveStrategy moveStrategy) {
+            this.moveStrategy = moveStrategy;
+        }
+        
+        public void changeEmotionStrategy(EmotionStrategy emotionStrategy) {
+            this.emotionStrategy = emotionStrategy;
+        }
+    }
+    ```
+
+  - ```java
+    // 행동 영역 설정
+    public interface MoveStrategy {
+        void move();
+    }
+    
+    // 감정 영역 설정
+    public interface EmotionStrategy {
+        void emotion();
+    }
+    ```
+
+  - ```java
+    // 서있는 행동 객체
+    public class Stand implements MoveStrategy {
+        @Override
+        public void move() {
+            System.out.print("서있는 ");
+        }
+    }
+    
+    // 걷고있는 행동 객체
+    public class Walking implements MoveStrategy {
+        @Override
+        public void move() {
+            System.out.print("걷고있는 ");
+        }
+    }
+    
+    // 달리는 행동 객체
+    public class Running implements MoveStrategy {
+        @Override
+        public void move() {
+            System.out.print("달리는 ");
+        }
+    }
+    ```
+
+  - ```java
+    // 화난 감정 객체
+    public class Angry implements EmotionStrategy {
+        
+        @Override
+        public void emotion() {
+            System.out.print("화난 ");
+        }
+    }
+    
+    // 행복한 감정 객체
+    public class Happy implements EmotionStrategy {
+        @Override
+        public void emotion() {
+            System.out.print("행복한 ");
+        }
+    }
+    ```
+
+  - ```java
+    // 메인 메서드
+    public class Main {
+        public static void main(String[] args) {
+            Robot robot = new Robot(new Walking(), new Angry()); // 걷고 있는, 화난 객체 설정
+            robot.robotExplain(); // 출력
+            robot.changeMoveStrategy(new Running()); // 걷고 있는 -> 달리는 교체
+            robot.robotExplain(); // 출력
+            robot.changeEmotionStrategy(new Happy()); // 화난 -> 행복한 교체
+            robot.changeMoveStrategy(new Stand()); // 달리는 -> 서있는 교체
+            robot.robotExplain(); // 출력
+        }
+    }
+    
+    
+    // 출력 결과
+    
+    // 걷고있는 화난 로봇
+    // 달리는 화난 로봇
+    // 서있는 행복한 로봇
+    ```
+
+    <br/>
+
+## 4. 자바 JDK에서 사용되는 전략 패턴
+
+- 정말 대표적으로 많이 사용되는 전략 패턴 예제를 하나 꼽자면, sort() 정렬 메서드에 사용되는 Comparator 인터페이스이다.
+
+  - ```java
+    class Scratch {
+        void run () throws IOException {
+            Integer[] arr = {4, 7, 100, 2, 6, 33523, 6345, 423, 342, 324, 652, 4};
+            System.out.println(Arrays.toString(arr) + "\n");
+            
+            Arrays.sort(arr); // 오름차순 정렬
+            System.out.println(Arrays.toString(arr) + "\n");
+            
+            Arrays.sort(arr, Comparator.reverseOrder()); // reverseOrder() : 내림차순 정렬 알고리즘 부여
+            System.out.println(Arrays.toString(arr) + "\n");
+            
+            Arrays.sort(arr, Comparator.naturalOrder()); // naturalOrder() : 오름차순 정렬 알고리즘 부여
+            System.out.println(Arrays.toString(arr) + "\n");
+        }
+        
+        public static void main(String[] args) throws IOException {
+            new Scratch().run();
+        }
+    }
+    
+    // 출력 결과
+    // [4, 7, 100, 2, 6, 33523, 6345, 423, 342, 324, 652, 4]
+    //
+    // [2, 4, 4, 6, 7, 100, 324, 342, 423, 652, 6345, 33523]
+    // 
+    // [33523, 6345, 652, 423, 342, 324, 100, 7, 6, 4, 4, 2]
+    // 
+    // [2, 4, 4, 6, 7, 100, 324, 342, 423, 652, 6345, 33523]
+    ```
+
+  - **전략 객체를 교체함으로써 알고리즘과 행동 방식이 변경되는 모습을 볼 수 있다.**
