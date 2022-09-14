@@ -16,13 +16,13 @@
 * [Java](#java)
 * [Algorithm](#algorithm)
 * [Devops](#devops)
+* [Book](#book)
 
 ---
 
 <br/>
 
 ## [Java](https://bit.ly/3xVeBnM)
-
 - [배열의 본질, 포인터와 배열의 관계](https://bit.ly/3xRqg6O)
 - [call by value VS call by reference](https://bit.ly/3xUzAHl)
 - [배열](https://bit.ly/3QwgDSv)
@@ -54,3 +54,6 @@
 
 ## [Devops](https://bit.ly/3cPeSjV)
 - [gradle 빌드 추가 시 - Could not find method compile 해결 방법](https://bit.ly/3Q2X6Io)
+
+## [Book](https://bit.ly/3QKpQoW)
+- [프로그래머의 길, 멘토에게 묻다](https://bit.ly/3RQ1I60)
