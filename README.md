@@ -57,3 +57,4 @@
 
 ## [Book](https://bit.ly/3QKpQoW)
 - [프로그래머의 길, 멘토에게 묻다 - 1장 들어가는 글](https://bit.ly/3RQ1I60)
+- [프로그래머의 길, 멘토에게 묻다 - 2장 잔을 비우다](https://bit.ly/3QMZAdJ)
