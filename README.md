@@ -45,6 +45,7 @@
 - [디자인 패턴 - 상태 패턴](https://bit.ly/3qqYJEG)
 - [디자인 패턴 - 전략 패턴](https://bit.ly/3BsyK5d)
 - [객체지향 설계 - 계층을 넘어갈 땐, getter와 setter 대신 DTO](https://bit.ly/3fTzwRw)
+- [JUnit 테스트 - Test Fixture](https://bit.ly/3T6CsbQ)
 
 ## [Algorithm](https://bit.ly/3NodNwd)
 - [재귀함수](https://bit.ly/3yameqc)
