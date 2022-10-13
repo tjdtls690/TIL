@@ -46,6 +46,7 @@
 - [디자인 패턴 - 전략 패턴](https://bit.ly/3BsyK5d)
 - [객체지향 설계 - 계층을 넘어갈 땐, getter와 setter 대신 DTO](https://bit.ly/3fTzwRw)
 - [JUnit 테스트 - Test Fixture](https://bit.ly/3T6CsbQ)
+- [toString 의 용도 - 단순 로그?? or View 로직도 가능??](https://bit.ly/3CSe4Fo)
 
 ## [Algorithm](https://bit.ly/3NodNwd)
 - [재귀함수](https://bit.ly/3yameqc)
