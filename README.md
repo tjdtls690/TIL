@@ -7,7 +7,6 @@
 >
 > 내가 이해한 만큼만 작성
 
----
 
 <br/>
 
@@ -18,7 +17,6 @@
 * [Devops](#devops)
 * [Book](#book)
 
----
 
 <br/>
 
@@ -47,6 +45,7 @@
 - [객체지향 설계 - 계층을 넘어갈 땐, getter와 setter 대신 DTO](https://bit.ly/3fTzwRw)
 - [JUnit 테스트 - Test Fixture](https://bit.ly/3T6CsbQ)
 - [toString 의 용도 - 단순 로그?? or View 로직도 가능??](https://bit.ly/3CSe4Fo)
+- [View와 Domain 계층의 유효성 검증 분류](https://bit.ly/3CCLUNg)
 
 ## [Algorithm](https://bit.ly/3NodNwd)
 - [재귀함수](https://bit.ly/3yameqc)
