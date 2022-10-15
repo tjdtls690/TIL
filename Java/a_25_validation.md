@@ -2,6 +2,7 @@
 
 1. [문제 - 피드백 받기 전의 코드](#1-문제---피드백-받기-전의-코드) <br/>
 2. [해결 - 피드백 받은 후의 코드](#2-해결---피드백-받은-후의-코드) <br/>
+3. [표현 레벨에서 검증해주는 DTO](#3-표현-레벨에서-검증해주는-dto) <br/>
 
 <br/>
 
@@ -202,3 +203,60 @@ InputView 와 InputViewTest 의 코드는 동일하다. 여기서 도메인 객�
 
 
 결국 확실한 도메인 관련 유효성 검증은 <code><strong>이름 길이는 5자를 초과할 수 없다.</strong></code> 이다. 사실 InputView 에서 정규표현식을 통해 이미 이름 길이까지 유효성 검증을 하고 있다. 하지만 안전한 설계와 구현을 위해, 피드백 내용처럼 각자의 역할에 맡는 유효성 검증은 전부 추가해 주는 것이 좋아보인다.
+
+<br/>
+
+## 3. 표현 레벨에서 검증해주는 DTO
+
+꼭 Domain 과 View 에서 유효성 검증을 하지 않더라도, 입력 받은 값을 바로 DTO 의 생성자를 통해 유효성 검증을 하면서 DTO 를 반환해주는 형식도 가능하다고 한다. 생각해보면 DTO 의 데이터 전달 경로는 Domain -> View 뿐만이 아닌 View -> Domain 도 될 수 있다는 사실을 간과한 것이다.
+
+
+
+DTO 를 통해 유효성 검증을 하고 있는 코드이다.
+
+```java
+public class InputView {
+    ... 생략
+
+    public static LadderHeightDTO inputLadderHeight() {
+        try {
+            System.out.println(LADDER_HEIGHT_INPUT_MESSAGE);
+            return new LadderHeightDTO(SCANNER.nextLine());
+        } catch (IllegalArgumentException e) {
+            System.out.println(e.getMessage());
+            return inputLadderHeight();
+        }
+    }
+    
+    ... 생략
+}
+```
+
+```java
+public class LadderHeightDTO {
+    private static final String INPUT_EXCEPTION_MESSAGE = "올바른 입력 형식이 아닙니다. 다시 입력해주세요.";
+    private static final String LADDER_HEIGHT_INPUT_FORM = "[1-9][0-9]*";
+    
+    private final int ladderHeight;
+    
+    public LadderHeightDTO(String ladderHeight) {
+        this.ladderHeight = parseLadderHeight(ladderHeight);
+    }
+
+    private static int parseLadderHeight(String ladderHeight) {
+        checkLadderHeightInputForm(ladderHeight);
+        return Integer.parseInt(ladderHeight);
+    }
+
+    private static void checkLadderHeightInputForm(String ladderHeight) {
+        Matcher matcher = Pattern.compile(LADDER_HEIGHT_INPUT_FORM).matcher(ladderHeight);
+        if (!matcher.matches()) {
+            throw new IllegalArgumentException(INPUT_EXCEPTION_MESSAGE);
+        }
+    }
+    
+    ... 생략
+}
+```
+
+표현 레벨에서 바로 DTO 의 생성자를 통해 유효성 검증 및 DTO 전달을 수행하고 있다. null 검증은 완전한 View 의 역할이라 생각해서 InputView 로 따로 빼주었다.
