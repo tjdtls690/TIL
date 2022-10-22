@@ -47,6 +47,7 @@
 - [toString 의 용도 - 단순 로그?? or View 로직도 가능??](https://bit.ly/3CSe4Fo)
 - [View와 Domain 계층의 유효성 검증 분류](https://bit.ly/3CCLUNg)
 - [TDD - Out-In 보단 In-Out 방식](https://bit.ly/3Tv3CJt)
+- [람다 (Lambda) 는 순수 함수가 정말 맞아??](https://bit.ly/3SpZYzM)
 
 ## [Algorithm](https://bit.ly/3NodNwd)
 - [재귀함수](https://bit.ly/3yameqc)
