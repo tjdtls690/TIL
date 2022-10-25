@@ -275,7 +275,7 @@ class Scratch {
         
         // 3)
         strings3.sort(Comparator.naturalOrder()); // 자바에서 정렬 패턴 형식을 지정하라고 제공해준 정렬 전략 패턴 리턴 메서드
-        				// 해당 Comparator.naturalOrder() 메서드는 오름차순 정렬 패턴으로 설정해준다.
+        					// 해당 Comparator.naturalOrder() 메서드는 오름차순 정렬 패턴으로 설정해준다.
         
         System.out.println(strings1);
         System.out.println(strings2);
