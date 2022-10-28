@@ -1,6 +1,7 @@
 # 목차
 
 1. [문제 발생 - 주 생성자와 부 생성자의 제네릭 타입](#1-문제-발생---주-생성자와-부-생성자의-제네릭-타입) <br/>
+2. [문제 해결 - 외부에서부터 데이터 가공후 생성자 파라미터로 전달](#2-문제-해결---외부에서부터-데이터-가공후-생성자-파라미터로-전달) <br/>
 
 <br/>
 
@@ -68,7 +69,90 @@ public class Users {
 
 <br/>
 
-처음엔 왜 부 생성자에서 에러가 나는지 몰랐는데, 답을 찾았다. **'제네릭 타입이 다른 것'은 오버로딩의 조건을 충족시켜주지 못하기 때문이다.**
+처음엔 왜 부 생성자에서 에러가 나는지 몰랐는데, 검색해보다가 답을 찾았다. **'제네릭 타입이 다른 것'은 오버로딩의 조건을 충족시켜주지 못하기 때문이다.** 그렇다면 왜 '제네릭 타입의 다름'은 오버로딩의 조건을 충족시켜주지 못하는 것일까??
 
-그렇다면 왜 제네릭 타입의 다름은 오버로딩의 조건을 충족시켜주지 못하는 것일까??
+<br/>
 
+### Generic Type Erasure
+
+자바 개발자들은 이러한 하위 호환성을 위해서 **Type Erasure 라는 개념**을 도입하였다. 자바 1.5 버전 이하에서는 제네릭이라는 개념이 없었다. 그래서 자바 컴파일러는 1.5 이전과 이후 버전의 상호 호환성을 위해서 제네릭을 지워버린다.
+
+```java
+public class Users {
+    private final List<User> users;
+    
+    // 부 생성자
+    public Users(final List users) { // 컴파일러에 의해 제네릭이 지워짐
+        this(initUsers(users));
+    }
+    
+    // 주 생성자
+    public Users(final List users) { // 컴파일러에 의해 제네릭이 지워짐
+        this.users = users;
+    }
+    
+    private static List<User> initUsers(final List<List<String>> users) {
+        return users.stream()
+                .map(Users::initUser)
+                .collect(Collectors.toList());
+    }
+    
+    private static User initUser(final List<String> user) {
+        return new User(user.get(1), user.get(0));
+    }
+}
+```
+
+<br/>
+
+위 예시와 같이 컴파일이 될 때 제네릭을 지우고 컴파일 된다. 그래서 같은 List 라는 타입으로 취급받고 컴파일 에러가 나면서 오버로딩이 불가능해지는 것이다.
+
+<br/>
+
+## 2. 문제 해결 - 외부에서부터 데이터 가공후 생성자 파라미터로 전달
+
+결국 맘에 안드는 방법이지만 외부에서부터 데이터를 가공해서 전달하는 식으로 해결을 했다.
+
+```java
+public class Users {
+    private final List<User> users;
+    
+    public Users(final List<User> users) {
+        this.users = users;
+    }
+}
+
+
+// Users 클래스의 생성자를 호출하는 외부 클래스
+public class Manager {
+    private final Users users;
+    private final DuplicateAccountEmails duplicateAccountEmails;
+    
+    public Manager(final List<List<String>> users) {
+        this(initUsers(users));
+    }
+    
+    public Manager(final Users users) {
+        this.users = users;
+        this.duplicateAccountEmails = new DuplicateAccountEmails();
+    }
+    
+    private static Users initUsers(final List<List<String>> users) {
+        return new Users(parseUsers(users)); // Users 클래스 생성자 호출하는 부분
+    }
+    
+    private static List<User> parseUsers(final List<List<String>> users) { // 외부 클래스에서부터 데이터를 가공하는 모습
+        return users.stream()
+                .map(Manager::initUser)
+                .collect(Collectors.toList());
+    }
+    
+    private static User initUser(final List<String> user) {
+        return new User(user.get(1), user.get(0));
+    }
+}
+```
+
+<br/>
+
+사실 이보다 더 나은 방법을 찾아보고 싶었다. 괜히 외부 클래스의 로직이 많아지는 것 같은 느낌을 받아서 그렇다. 앞으로의 프리코스 기간동안 경험하게 될 많은 문제들에 대해, 더 심도 깊은 고민을 해봐야 할 것 같다.
