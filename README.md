@@ -53,6 +53,7 @@
 - [람다 (Lambda) - 메서드 레퍼런스](https://bit.ly/3f30sOs)
 - [우아한 테크 코스 5기 프리코스 1주차 - 제네릭 타입과 오버로딩의 연관성](https://bit.ly/3Dd6uUS)
 - [우아한 테크 코스 5기 프리코스 1주차 - 도메인 간의 getter사용을 없애자](https://bit.ly/3DKNHSa)
+- [우아한 테크 코스 5기 프리코스 1주차 - List로 add() 했을 때 UnsupportedOperationException 발생하는 이유](https://bit.ly/3zvypyi)
 
 ## [Algorithm](https://bit.ly/3NodNwd)
 - [재귀함수](https://bit.ly/3yameqc)
