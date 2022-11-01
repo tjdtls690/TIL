@@ -217,7 +217,7 @@ add, set, remove, sort 등등 내부의 요소가 조금이라도 바뀔만한 �
 
 ### 2. Arrays.asList()
 
-위의 Arrays.asList() 가 반환하는 내부 클래스의 로직 예시에서, 생략했었던 부분들을 생략하지 않고 전부 가져와보자.
+위의 Arrays.asList() 가 반환하는 내부 클래스의 로직 예시에서 생략했었던 부분들 중 몇개의 기능 로직들을 가져와보자.
 
 ```java
 public class Arrays {
