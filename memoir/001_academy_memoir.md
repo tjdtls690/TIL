@@ -297,7 +297,7 @@
 
 
 
-    <img src="https://tjdtls690.github.io/assets/img/blog/githubGraph.png" width="600" height="800">
+    <img src="https://tjdtls690.github.io/assets/img/blog/githubGraph.png" width="750" height="900">
 
 
 
