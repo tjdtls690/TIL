@@ -127,13 +127,13 @@
 
 
 
-<img src="https://tjdtls690.github.io/assets/img/blog/notion_img01.PNG" width="300" height="300"> &nbsp;&nbsp; <img src="https://tjdtls690.github.io/assets/img/blog/notion_img02.PNG" width="300" height="300">
+<img src="https://tjdtls690.github.io/assets/img/blog/notion_img01.PNG" width="400" height="400"> &nbsp;&nbsp; <img src="https://tjdtls690.github.io/assets/img/blog/notion_img02.PNG" width="400" height="400">
 
 
-<img src="https://tjdtls690.github.io/assets/img/blog/notion_img03.PNG" width="300" height="300"> &nbsp;&nbsp; <img src="https://tjdtls690.github.io/assets/img/blog/notion_img04.PNG" width="300" height="300">
+<img src="https://tjdtls690.github.io/assets/img/blog/notion_img03.PNG" width="400" height="400"> &nbsp;&nbsp; <img src="https://tjdtls690.github.io/assets/img/blog/notion_img04.PNG" width="400" height="400">
 
 
-<img src="https://tjdtls690.github.io/assets/img/blog/book01.jpg" width="300" height="300"> &nbsp;&nbsp; <img src="https://tjdtls690.github.io/assets/img/blog/book02.jpg" width="300" height="300">
+<img src="https://tjdtls690.github.io/assets/img/blog/book01.jpg" width="400" height="400"> &nbsp;&nbsp; <img src="https://tjdtls690.github.io/assets/img/blog/book02.jpg" width="400" height="400">
 
 
 
