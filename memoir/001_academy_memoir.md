@@ -378,11 +378,10 @@
 
 
 
-    ![success01](/assets/img/blog/success01.jpg){: width="400" height="400"} &nbsp; ![success02](/assets/img/blog/success02.jpg){: width="380" height="380"}
+    <img src="https://tjdtls690.github.io/assets/img/blog/success01.jpg" width="450" height="450">
 
 
-
-    ![success03](/assets/img/blog/success03.jpg){: width="380" height="380"} &nbsp; ![success04](/assets/img/blog/success04.jpg){: width="380" height="380"}
+    <img src="https://tjdtls690.github.io/assets/img/blog/success03.jpg" width="450" height="450">
 
 
 
