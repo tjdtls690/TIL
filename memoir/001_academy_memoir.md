@@ -247,7 +247,8 @@
 
 
   <br/>
-    <a href="https://bit.ly/3wqm39L" target="_blank">
+  
+    <a href="https://bit.ly/3wqm39L" target="_blank">미니 프로젝트 깃허브 저장소 (포트폴리오)</a>
 
 
   **[미니 프로젝트 깃허브 저장소 (포트폴리오)](https://bit.ly/3wqm39L){:target="_blank"}**
@@ -284,7 +285,7 @@
 
 
 
-    참고로 <code><strong>내 계정은 tjdtls690</strong></code> 이다. **현재 페이지 주소(https://tjdtls690.github.io/memoir/2022-04-20-first_memoir/)**의 맨 왼쪽에 **'tjdtls690'** 이 있는 것을 보면 알 수 있을것이다.
+    참고로 <code><strong>내 계정은 tjdtls690</strong></code> 이다. **현재 페이지 주소(https://tjdtls690.github.io/memoir/2022-04-20-first_memoir/)** 의 맨 왼쪽에 **'tjdtls690'** 이 있는 것을 보면 알 수 있을것이다.
 
 
     <br/>
