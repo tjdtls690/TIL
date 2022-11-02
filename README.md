@@ -75,4 +75,4 @@
 - [프로그래머의 길, 멘토에게 묻다 - 6장 학습 과정의 구성](https://bit.ly/3Cbkuy3)
 
 ## [Memoir](https://bit.ly/3Dw2RJN)
-- [2022년 비전공자 개발자의 국비학원 수료 후 회고](https://bit.ly/3Dw2RJN)
+- [2022년 비전공자 개발자의 국비학원 수료 후 회고](http://bit.ly/3UohFBb)
