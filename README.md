@@ -76,3 +76,4 @@
 
 ## [Memoir](https://bit.ly/3Dw2RJN)
 - [2022년 비전공자 개발자의 국비학원 수료 후 회고](http://bit.ly/3UohFBb)
+- [NEXTSTEP - TDD, 클린 코드 with Java 과정 모든 미션 완료 후 회고](http://bit.ly/3WCOpIX)
