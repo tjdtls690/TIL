@@ -247,6 +247,8 @@
 
 
   <br/>
+    <a href="https://bit.ly/3wqm39L" target="_blank">
+
 
   **[미니 프로젝트 깃허브 저장소 (포트폴리오)](https://bit.ly/3wqm39L){:target="_blank"}**
 
