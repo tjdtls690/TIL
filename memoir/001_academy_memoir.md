@@ -247,11 +247,9 @@
 
 
   <br/>
-  
-    <a href="https://bit.ly/3wqm39L" target="_blank">미니 프로젝트 깃허브 저장소 (포트폴리오)</a>
 
 
-  **[미니 프로젝트 깃허브 저장소 (포트폴리오)](https://bit.ly/3wqm39L){:target="_blank"}**
+  **[미니 프로젝트 깃허브 저장소 (포트폴리오)](https://bit.ly/3wqm39L)**
 
 
   <br/>
@@ -285,13 +283,13 @@
 
 
 
-    참고로 <code><strong>내 계정은 tjdtls690</strong></code> 이다. **현재 페이지 주소(https://tjdtls690.github.io/memoir/2022-04-20-first_memoir/)** 의 맨 왼쪽에 **'tjdtls690'** 이 있는 것을 보면 알 수 있을것이다.
+    참고로 <code><strong>내 계정은 tjdtls690</strong></code> 이다. **현재 페이지 주소(https://github.com/tjdtls690/TIL/blob/main/memoir/001_academy_memoir.md)** 의 왼쪽에 **'tjdtls690'** 이 있는 것을 보면 알 수 있을것이다.
 
 
     <br/>
 
 
-    **[팀프로젝트 깃헙 저장소 기여율 페이지 링크](https://bit.ly/3ldseY9){:target="_blank"}**
+    **[팀프로젝트 깃헙 저장소 기여율 페이지 링크](https://bit.ly/3ldseY9)**
 
 
 
@@ -299,7 +297,7 @@
 
 
 
-    ![githubGraph](/assets/img/blog/githubGraph.png){: height="800"}
+    <img src="https://tjdtls690.github.io/assets/img/blog/githubGraph.png" width="600" height="800">
 
 
 
