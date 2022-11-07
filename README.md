@@ -57,6 +57,7 @@
 - [우아한 테크 코스 5기 프리코스 1주차 - List로 add() 했을 때 UnsupportedOperationException 발생하는 이유](https://bit.ly/3zvypyi)
 - [우아한 테크 코스 5기 프리코스 2주차 - 모든 원시값과 문자열을 포장하는 것의 이점을 인지하자](https://bit.ly/3E4f8H5)
 - [우아한 테크 코스 5기 프리코스 2주차 - indent depth를 1로 줄이기 위해 노력하면서 얻은 경험](https://bit.ly/3E4Q7LF)
+- [우아한 테크 코스 5기 프리코스 2주차 - 테스트만을 위한 생성자 구현에 대한 견해](https://bit.ly/3TdOcc5)
 
 ## [Algorithm](https://bit.ly/3NodNwd)
 - [재귀함수](https://bit.ly/3yameqc)
