@@ -152,15 +152,6 @@ class Scratch {
             integer = plusOne(integer);
         }
         
-        sum += integer;
-        return sum;
-    }
-    
-    private int sum(int sum, Integer integer) {
-        if (integer % 3 == 0) {
-            integer = plusOne(integer);
-        }
-        
         return sum + integer;
     }
     
