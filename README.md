@@ -78,6 +78,7 @@
 - [프로그래머의 길, 멘토에게 묻다 - 6장 학습 과정의 구성](https://bit.ly/3Cbkuy3)
 
 ## [Memoir](https://bit.ly/3Dw2RJN)
-- [2022년 비전공자 개발자의 국비학원 수료 후 회고](http://bit.ly/3UohFBb)
-- [NEXTSTEP - TDD, 클린 코드 with Java 과정 모든 미션 완료 후 회고](http://bit.ly/3WCOpIX)
-- [우아한 테크 코스 5기 프리코스 - 1주차 회고](http://bit.ly/3U1ZqS6)
+- [2022년 비전공자 개발자의 국비학원 수료 후 회고](https://bit.ly/3UohFBb)
+- [NEXTSTEP - TDD, 클린 코드 with Java 과정 모든 미션 완료 후 회고](https://bit.ly/3WCOpIX)
+- [우아한 테크 코스 5기 프리코스 - 1주차 회고](https://bit.ly/3U1ZqS6)
+- [우아한 테크 코스 5기 프리코스 - 2주차 회고](https://bit.ly/3t9sKui)
