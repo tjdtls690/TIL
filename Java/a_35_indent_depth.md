@@ -162,6 +162,10 @@ class Scratch {
         
         return integer + 1;
     }
+
+    public static void main(String[] args) throws IOException {
+        new Scratch().run();
+    }
 }
 
 // 출력 결과
