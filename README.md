@@ -82,3 +82,4 @@
 - [NEXTSTEP - TDD, 클린 코드 with Java 과정 모든 미션 완료 후 회고](https://bit.ly/3WCOpIX)
 - [우아한 테크 코스 5기 프리코스 - 1주차 회고](https://bit.ly/3U1ZqS6)
 - [우아한 테크 코스 5기 프리코스 - 2주차 회고](https://bit.ly/3t9sKui)
+- [우아한 테크 코스 5기 프리코스 - 3주차 회고](https://bit.ly/3GdE6Fj)
