@@ -37,7 +37,7 @@
 
 처음 4차 미션의 요구사항을 봤을 때, 수많은 if문이 필요할 수 있겠다고 생각했다. '이동하는 상태의 종류'와 '게임 종료 조건'이 여러 가지였기 때문이다. 그래서 최대한 if문을 줄이기 위해, 다리를 건너는 과정을 상태 패턴을 적용하여 설계했다.
 
-<img src="https://tjdtls690.github.io/assets/img/blog/diagram01.PNG" width="600" height="600">
+<img src="https://tjdtls690.github.io/assets/img/blog/diagram01.PNG" width="700" height="600">
 
 ```java
 public interface MovingResultState {
