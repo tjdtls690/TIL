@@ -25,9 +25,9 @@
 
 <br/>
 
-- **4주차 문제 :** [다리 건너기 게임](https://bit.ly/3XuYYya){:target="_blank"}
+- **4주차 문제 :** [다리 건너기 게임](https://bit.ly/3XuYYya)
 
-- **내가 제출한 PR :** [다리 건너기 게임 제출 PR](https://bit.ly/3U5NLAR){:target="_blank"}
+- **내가 제출한 PR :** [다리 건너기 게임 제출 PR](https://bit.ly/3U5NLAR)
 
   <br/>
 
