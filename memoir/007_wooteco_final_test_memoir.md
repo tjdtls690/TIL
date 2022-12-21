@@ -66,7 +66,7 @@
 
 
 
-<img src="https://tjdtls690.github.io/assets/img/blog/wooteco_mail01.PNG" width="700" height="450">
+<img src="https://tjdtls690.github.io/assets/img/blog/wooteco_mail01.PNG" width="800" height="380">
 
 
 
