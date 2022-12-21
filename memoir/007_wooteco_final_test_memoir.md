@@ -88,7 +88,7 @@
 
 
 
-[우아한 테크 코스 5기 최종 코딩 테스트 문제](https://github.com/woowacourse-precourse/java-menu){:target="_blank"}
+[우아한 테크 코스 5기 최종 코딩 테스트 문제](https://github.com/woowacourse-precourse/java-menu)
 
 
 
