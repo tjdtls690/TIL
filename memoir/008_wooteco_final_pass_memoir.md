@@ -14,7 +14,7 @@
 
 ## 1. 최종 합격
 
-<img src="https://tjdtls690.github.io/assets/img/blog/wooteco.PNG" width="400" height="670">
+<img src="https://tjdtls690.github.io/assets/img/blog/wooteco.PNG" width="500" height="670">
 
 <br/>
 
