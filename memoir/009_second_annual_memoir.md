@@ -85,7 +85,7 @@
 
 <br/>
 
-**[[1인분만 한다? 1억 모으기? MZ가 묻고 유현준이 답하다]](https://www.youtube.com/watch?v=KyEcHCKrwHc&loop=0){:target="_blank"}**
+**[[1인분만 한다? 1억 모으기? MZ가 묻고 유현준이 답하다]](https://www.youtube.com/watch?v=KyEcHCKrwHc&loop=0)**
 
 <br/>
 
