@@ -62,6 +62,7 @@
 - [리플렉션 (Reflection) - 리플렉션의 개념 및 사용법](https://bit.ly/3kPN1UV)
 - [이펙티브 자바(Effective Java) - 아이템 01 정적 팩토리 메서드](https://bit.ly/3Dqaa6v)
 - [이펙티브 자바(Effective Java) - 아이템 02 생성자에 매개변수가 많다면 빌더를 고려하라](https://bit.ly/3JvdJwj)
+- [이펙티브 자바(Effective Java) - 아이템 03 private 생성자나 열거 타입으로 싱글톤임을 보증하라](https://bit.ly/3wV88aQ)
 
 ## [Algorithm](https://bit.ly/3NodNwd)
 - [재귀함수](https://bit.ly/3yameqc)
