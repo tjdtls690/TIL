@@ -16,7 +16,7 @@
 
 싱글톤 패턴에 대해 알고 싶다면, 밑의 링크를 참고하길 바란다.
 
-**[[자바, Java] 디자인 패턴 - 싱글톤 패턴 (Singleton pattern)](https://bit.ly/3l97qEg)**
+**[[자바, Java] 디자인 패턴 - 싱글톤 패턴 (Singleton pattern)](https://bit.ly/3KS2lJf)**
 
 <br/>
 
@@ -210,7 +210,7 @@ public class App {
 
      - 즉, private 생성자를 이용해서 인스턴스 객체를 새로 생성할 수 있는 것이다.
 
-     - **지난번에 작성한 리플렉션 정리 글 링크 : [[자바, Java] 리플렉션 (Reflection) - 리플렉션의 개념 및 사용법](https://tjdtls690.github.io/studycontents/java/2023-01-27-reflection01/)**
+     - **지난번에 작성한 리플렉션 정리 글 링크 : [[자바, Java] 리플렉션 (Reflection) - 리플렉션의 개념 및 사용법](https://bit.ly/3kPN1UV)**
 
      - 리플렉션으로 private 생성자를 꺼내서 객체를 새로 생성하는 예제를 간단히 만들어보자.
 
