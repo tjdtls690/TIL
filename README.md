@@ -65,7 +65,6 @@
 - [이펙티브 자바(Effective Java) - 아이템 03 private 생성자나 열거 타입으로 싱글톤임을 보증하라](https://bit.ly/3wV88aQ)
 - [이펙티브 자바(Effective Java) - 아이템 04 인스턴스화를 막으려거든 private 생성자를 사용하라](https://bit.ly/3Y4DuYI)
 - [이펙티브 자바(Effective Java) - 아이템 05 자원을 직접 명시하지 말고 의존 객체 주입을 사용하라](https://bit.ly/3RBNl5Q)
-- [[우아한 테크 코스 5기] 레벨1 - 사다리 게임 미션을 통해 배운 점](https://bit.ly/41GSH4z)
 
 ## [Algorithm](https://bit.ly/3NodNwd)
 - [재귀함수](https://bit.ly/3yameqc)
@@ -95,3 +94,4 @@
 - [우아한 테크 코스 5기 - 프리코스 및 최종 코딩 테스트 전체 회고](https://bit.ly/3HXGzVn)
 - [우아한 테크 코스 5기 백엔드 최종 합격 및 전체 과정 회고](https://bit.ly/3vkjqon)
 - [2022년 비전공자 개발자의 회고 (feat. 우아한 테크 코스 합격)](https://bit.ly/3jLkpLQ)
+- [[우아한 테크 코스 5기] 레벨1 - 사다리 게임 미션을 통해 배운 점](https://bit.ly/41GSH4z)
