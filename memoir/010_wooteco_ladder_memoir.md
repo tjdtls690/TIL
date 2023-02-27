@@ -20,7 +20,7 @@
 
 ## 1. 원시값 포장 (책임 분리)
 
-<img src="https://tjdtls690.github.io/assets/img/blog/ladder_001.PNG" width="850" height="800">
+<img src="https://tjdtls690.github.io/assets/img/blog/ladder_001.PNG" width="850" height="700">
 ![001](C:\Users\tjdtl\Desktop\우테코 미션 회고록 이미지 자료\002. 사다리 게임\001.PNG)
 
 일급 콜렉션인 GameResults 에선 여러개의 String(GameResult)를 갖고 있다. 처음에 구현할 땐, **기능적으로만 생각했기 때문에** 여러 GameResult 전체를 관리하는 일급콜렉션인 GameResults만 기능이 존재하고, 각각의 GameResult 는 딱히 가지고 있을 기능이 없을 것으로 여겼다.
@@ -33,7 +33,7 @@
 
 ## 2. 유효성 검증의 분류 (Domain과 View)
 
-<img src="https://tjdtls690.github.io/assets/img/blog/ladder_002.PNG" width="850" height="800">
+<img src="https://tjdtls690.github.io/assets/img/blog/ladder_002.PNG" width="850" height="700">
 
 유효성 검증은 어떤 클래스에 맡기는 것이 적절할까??
 
@@ -48,7 +48,7 @@
 
 ## 3. 컨트롤러와 도메인간의 적절한 데이터 전달
 
-<img src="https://tjdtls690.github.io/assets/img/blog/ladder_003.PNG" width="850" height="800">
+<img src="https://tjdtls690.github.io/assets/img/blog/ladder_003.PNG" width="850" height="700">
 
 이 부분은 컨트롤러에서의 도메인 객체 메서드의 호출을 줄이려고 해서 그랬다. 미리 정제된 값을 전달하려면 컨트롤러에서 각 도메인이 협력하여 정제를 시키는 로직을 넣어야하는데, 컨트롤러의 역할에 맞는 것인가?? 하는 생각이 들었다.
 
@@ -60,7 +60,7 @@
 
 ## 4. 테스트를 할 만한 로직의 구별
 
-<img src="https://tjdtls690.github.io/assets/img/blog/ladder_004.PNG" width="850" height="800">
+<img src="https://tjdtls690.github.io/assets/img/blog/ladder_004.PNG" width="850" height="700">
 
 사실 여기서 말하는 테스트를 한 비즈니스 로직은 이렇다.
 
@@ -82,6 +82,6 @@ getter 메서드 명 말고 이러한 메서드명을 부여해 준 의도는 �
 
 ## 5. Null Pointer Exception 방지
 
-<img src="https://tjdtls690.github.io/assets/img/blog/ladder_005.PNG" width="850" height="800">
+<img src="https://tjdtls690.github.io/assets/img/blog/ladder_005.PNG" width="850" height="700">
 
 이 부분은 사실 좀 충격 먹었었다. 굉장히 심플한 부분이지만 지금까지 생각지도 못했던 부분이기도 하다. 메서드를 호출하는 주체를 Null 이 확실하게 아닌 문자열로 바꾸는 것만으로 Null Pointer Exception을 방지할 수 있다는 사실에 감격한다...
