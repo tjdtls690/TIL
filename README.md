@@ -66,6 +66,7 @@
 - [이펙티브 자바(Effective Java) - 아이템 04 인스턴스화를 막으려거든 private 생성자를 사용하라](https://bit.ly/3Y4DuYI)
 - [이펙티브 자바(Effective Java) - 아이템 05 자원을 직접 명시하지 말고 의존 객체 주입을 사용하라](https://bit.ly/3RBNl5Q)
 - [[우아한 테크 코스 5기] 레벨1 - 로직은 getter, 하지만 쓰임새는 비즈니스](https://bit.ly/3yenmZv)
+- [[우아한 테크 코스 5기] 레벨1 - Functional interface를 통한 의존성 제거](https://bit.ly/3laj4iO)
 
 ## [Algorithm](https://bit.ly/3NodNwd)
 - [재귀함수](https://bit.ly/3yameqc)
