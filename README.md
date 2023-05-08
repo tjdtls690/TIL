@@ -68,6 +68,7 @@
 - [[우아한 테크 코스 5기] 레벨1 - 로직은 getter, 하지만 쓰임새는 비즈니스](https://bit.ly/3yenmZv)
 - [[우아한 테크 코스 5기] 레벨1 - Functional interface를 통한 의존성 제거](https://bit.ly/3laj4iO)
 - [[우아한테크코스 5기] 레벨2 - Service Layer는 무엇이고 어떻게 활용해야 하는가?](https://bit.ly/3Ln03UA)
+- [[우아한테크코스 5기] 레벨2 - 단위 테스트의 재정립](https://bit.ly/3NNE8Hz)
 
 ## [Algorithm](https://bit.ly/3NodNwd)
 - [재귀함수](https://bit.ly/3yameqc)
