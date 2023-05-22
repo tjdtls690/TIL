@@ -30,6 +30,7 @@ Layered Architecture는 코드를 모듈화하고 재사용성을 높여서,  �
 각 계층은 분명 서로 상호작용이 일어나지만, 다른 계층에서 발생하는 일에 대해선 전혀 몰라도 된다.
 
 ![계층 구조](C:\Users\tjdtl\Desktop\계층 구조.PNG)
+<img src="https://tjdtls690.github.io/assets/img/blog/layered_architecture.PNG" width="850" height="300">
 
 개인적으로 Layered Architecture에 대해 가장 이해하기 쉬웠던 그림이다.
 
