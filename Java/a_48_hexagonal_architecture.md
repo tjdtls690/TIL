@@ -113,7 +113,7 @@ ORM(object-relational mapping) 프레임 워크에 의해 DB 중심적이 되기
 
 이제 이 클린 아키텍처를 좀 더 구체화한 헥사고날 아키텍처를 살펴보자.
 
-<img src="https://tjdtls690.github.io/assets/img/blog/헥사고날_아키텍처.png" width="850" height="300">
+<img src="https://tjdtls690.github.io/assets/img/blog/헥사고날_아키텍처.png" width="850" height="500">
 
 <br/>
 
@@ -217,7 +217,7 @@ Output Port는 좀 특이한 포지션을 갖는다. 원칙적으론 Service 계
 
 ## 패키지 구조
 
-<img src="https://tjdtls690.github.io/assets/img/blog/헥사고날06.PNG" width="200" height="700">
+<img src="https://tjdtls690.github.io/assets/img/blog/헥사고날06.PNG" width="300" height="700">
 
 1. 관심사별로 크게 패키지를 나눈다. 
 2. adapter(Adapter)와 application(Service) 패키지로 나눈다. 
