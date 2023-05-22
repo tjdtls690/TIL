@@ -105,7 +105,7 @@ ORM(object-relational mapping) 프레임 워크에 의해 DB 중심적이 되기
 
 **먼저 클린 아키텍처의 의존성을 살펴보자.**
 
-<img src="https://tjdtls690.github.io/assets/img/blog/클린_아키텍처.jpg" width="850" height="300">
+<img src="https://tjdtls690.github.io/assets/img/blog/클린_아키텍처.jpg" width="850" height="500">
 
 <br/>
 
@@ -131,7 +131,7 @@ Service 계층에 속하며, Input Port 인터페이스를 구현한 Service라 
 
 때문에 Service로 전달할 **'입력 모델 (AddLineRequest)'** 을 두는 것이 좋다. 그 입력 모델을 통해 입력 유효성 검증을 진행해 줄 수 있다. 즉 Web Adapter에서 Http 요청 값을 한 번 더 Service의 입력 모델로 매핑한 뒤 서비스로 전달하는 것이다.
 
-<img src="https://tjdtls690.github.io/assets/img/blog/헥사고날03.PNG" width="850" height="300">
+<img src="https://tjdtls690.github.io/assets/img/blog/헥사고날03.PNG" width="850" height="400">
 
 <br/>
 
@@ -174,7 +174,7 @@ Output Port는 좀 특이한 포지션을 갖는다. 원칙적으론 Service 계
 
 이 또한 이름처럼 Adapter이기 때문에 매핑의 역할을 갖는다. 어떤 것을?? 도메인 데이터(domain Entity or 특정 값)와 데이터 베이스 포맷(Persistence Entity)이다.
 
-<img src="https://tjdtls690.github.io/assets/img/blog/헥사고날05.PNG" width="850" height="300">
+<img src="https://tjdtls690.github.io/assets/img/blog/헥사고날05.PNG" width="850" height="500">
 
 <br/>
 
@@ -217,7 +217,7 @@ Output Port는 좀 특이한 포지션을 갖는다. 원칙적으론 Service 계
 
 ## 패키지 구조
 
-<img src="https://tjdtls690.github.io/assets/img/blog/헥사고날06.PNG" width="850" height="300">
+<img src="https://tjdtls690.github.io/assets/img/blog/헥사고날06.PNG" width="200" height="700">
 
 1. 관심사별로 크게 패키지를 나눈다. 
 2. adapter(Adapter)와 application(Service) 패키지로 나눈다. 
