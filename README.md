@@ -71,7 +71,7 @@
 - [[우아한테크코스 5기] 레벨2 - 단위 테스트의 재정립](https://bit.ly/3NNE8Hz)
 - [[우아한테크코스 5기] 레벨2 - 계층형 아키텍처 vs 헥사고날 아키텍처](https://bit.ly/43zYwAX)
 - [[우아한테크코스 5기] 레벨2 - 여러 조회를 한 번에 진행하기](https://bit.ly/3P4q6lA)
-- [[Spring, MySQL] 비즈니스 로직의 흐름을 변경하여 조회 성능 개선하기](https://bit.ly/46UFWoR)
+- [[Spring, MySQL] 비즈니스 로직의 흐름을 변경하여 조회 성능 개선하기](https://bit.ly/3FKsnwu)
 
 ## [Algorithm](https://bit.ly/3NodNwd)
 - [재귀함수](https://bit.ly/3yameqc)
