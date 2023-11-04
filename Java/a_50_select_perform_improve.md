@@ -6,7 +6,7 @@
 
 <br/>
 
-# [Spring, MySQL] 비즈니스 로직의 흐름을 변경하여 조회 성능 개선하기
+# [DB, Querydsl] 반정규화를 통한 조회 성능 개선 (트래픽 부하 테스트)
 
 ## 1. 문제 발생
 
@@ -16,7 +16,25 @@
 
 문제는 개발서버에서 QA를 할 때, 이 조회 기능을 한 번씩 실행할 때마다 **8초 이상**이 걸린다는 것이다. 우리 팀은 운영서버로 배포하기 전에 항상 개발서버에서 QA 타임을 가지는데, 속도가 너무 느려서 시간이 오래 걸리는 것이다.
 
-물론 실제 운영 서버엔 회원수 200명, 게시글 수 700건, 투표 수 7000건 정도라서 좀 이른 감이 있지만, 이 기회에 개발 서버를 통해 대용량 데이터일 때의 성능 개선을 시도해보고자 하였다.
+해당 기능을 Jmeter를 통해 트래픽 부하 테스트도 진행해보았다. 물론 실제 운영 서버엔 회원수 200명, 게시글 수 700건, 투표 수 7000건 정도라서 부하 테스트는 아직 이르지만, 이처럼 개발 서버에 많은 데이터가 있을 때를 기회로 삼아서 트래픽 부하 테스트를 통한 성능 개선을 경험해보고자 하였다.
+
+먼저 5초동안 **초당 30명의 유저**가 반복 요청(총 150번 요청)을 보내도록 설정했다.
+
+<img src="https://tjdtls690.github.io/assets/img/blog/조회성능개선1.PNG" width="300" height="700">
+
+<br/>
+
+부하 테스트를 해본 결과, 한 번씩 요청 보내면서 테스트 했을 때 8초가 걸린 것과는 달리, **하나의 요청당 48초**가 걸리는 모습이다.
+
+<img src="https://tjdtls690.github.io/assets/img/blog/조회성능개선2.PNG" width="300" height="700">
+
+<br/>
+
+또한 에러 비율이 38%인 모습이다. 현재 상태에선 초당 30건의 요청도 처리하기 힘들다는 뜻이다.
+
+<img src="https://tjdtls690.github.io/assets/img/blog/조회성능개선3.PNG" width="300" height="700">
+
+<img src="https://tjdtls690.github.io/assets/img/blog/조회성능개선4.PNG" width="300" height="700">
 
 <br/>
 
@@ -131,7 +149,7 @@ public class PostCustomRepositoryImpl implements PostCustomRepository {
 
 <br/>
 
-각 Post의 Vote 개수로 정렬하기 위해 orderBy() 메서드의 HOT case(인기순) 코드를 보면 압권이다. 2000만 건 데이터가 있는 vote 테이블을 계속 스캔해야한다.
+각 Post의 Vote 개수로 정렬하기 위해 작성한 orderBy() 메서드의 HOT case(인기순) 코드를 보면 압권이다. 2000만 건 데이터가 있는 vote 테이블을 계속 스캔해야 하는 상황이다.
 
 이제 이 기능을 Swagger로 테스트해보자. orderBy() 메서드를 보면 인기순(PostSortType == HOT)이 훨씬 더 성능이 느릴 게 뻔하니 인기순으로 테스트 해보겠다.
 
@@ -215,7 +233,13 @@ public class PostCustomRepositoryImpl implements PostCustomRepository {
 
 현재 vote 테이블엔 2000만건의 데이터가 들어가있는데, 정렬의 기준이 될 vote의 개수를 구하기 위해 order by에서 중첩 서브쿼리로 vote 개수를 구하는 모습이다.
 
-이 쿼리의 실행계획은 너무 커서 여기에 첨부하진 않겠지만, 데이터가 많은 테이블에서 딱히 Using temporary, Using filesort가 일어나는 것도 아니다. 그럼에도 불구하고, 대용량 데이터를 스캔해서 각 Post의 vote 개수를 구하고, 그걸로 vote 건너건너의 Post를 정렬하려니 오래 걸릴 수밖에 없다.
+이 쿼리의 실행계획(explain)이 너무 많아서 여기에 첨부하진 않겠지만, 결국 각 Post의 Vote 개수를 구하면서 정렬해야하기에, 2000만 레코드인 Vote 테이블과 10만 레코드인 Post 테이블을 전부 스캔하게 되는 것이 가장 큰 이유이다.
+
+실제로 해당 쿼리문을 **explain analyze** 로도 분석해보면, Post 테이블을 스캔할 때 Vote 테이블을 같이 스캔해야하기 때문에, Post 테이블의 10만 레코드를 스캔하는 작업이 가장 오래 걸리는 것으로 나온다. 
+
+```tex
+"-> Table scan on (cost=35520..35627 rows=8330) (actual time=7269..7283 rows=100000 loops=1)"
+```
 
 <br/>
 
@@ -225,7 +249,7 @@ public class PostCustomRepositoryImpl implements PostCustomRepository {
 
 **해결 과정**
 
-1. Post 테이블에 vote_count 컬럼을 새로 추가
+1. Post 테이블에 vote_count 컬럼을 새로 추가 **(반정규화)**
 2. 투표를 할 때마다 Post 테이블의 vote_count 컬럼을 1씩 증가
 3. 조회할 때, Post 테이블의 vote_count로 정렬
 
@@ -346,6 +370,22 @@ select
 ```
 
 **<u>8초 -> 0.27초</u>** 즉, **<u>29~30배</u>** 정도 성능이 개선된 모습을 볼 수 있다. 굉장히 성공적인 성능 개선이라고 생각한다.
+
+트래픽 부하 테스트도 진행해보았다.
+
+먼저 3초동안 **초당 1000명의 유저**가 반복 요청(총 3000번 요청)을 보내도록 설정했다.
+
+<img src="https://tjdtls690.github.io/assets/img/blog/조회성능개선5.PNG" width="300" height="700">
+
+<br/>
+
+부하 테스트를 해본 결과, 비록 하나의 요청당 86초 정도 걸리게 되었지만, **초당 1000명의 요청에도 에러 비율이 6%대를 유지**한다는 점에서 개선하기 전보다 성능이 훨씬 좋아졌다는 것에 의의를 두었다.
+
+<img src="https://tjdtls690.github.io/assets/img/blog/조회성능개선6.PNG" width="300" height="700">
+
+<img src="https://tjdtls690.github.io/assets/img/blog/조회성능개선7.PNG" width="300" height="700">
+
+<img src="https://tjdtls690.github.io/assets/img/blog/조회성능개선8.PNG" width="300" height="700">
 
 <br/>
 
