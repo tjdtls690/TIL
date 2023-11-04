@@ -356,11 +356,64 @@ select
             on p1_0.id=p2_0.post_id 
     where
         p2_0.category_id=1
-		and p1_0.deadline>'2023-11-04T21:40:45.365115'
+		and p1_0.deadline>'2023-09-28T21:40:45.365115'
         and p1_0.is_hidden=false
     order by
         p1_0.vote_count desc -- 개선하기 전에 엄청나게 중첩된 서브쿼리가 발생한 것에 비해서 훨씬 개선된 모습이다.
-	limit 30000,10;
+	limit 12340,10;
+```
+
+```json
+실행 계획
+
+Post 테이블 스캔 시, idx_vote_count 인덱스를 타주는 모습을 볼 수 있다. 물론 filtered가 3.33% 인 것을 보면 성능을 더 개선할 여지가 있어보인다. 
+다음 글에서 커버링 인덱스를 통해 성능을 더 개선할 예정이다.
+
+[
+	{
+		"id" : 1,
+		"select_type" : "SIMPLE",
+		"table" : "p1_0",
+		"partitions" : null,
+		"type" : "index",
+		"possible_keys" : "PRIMARY,fk_post_member1_idx",
+		"key" : "idx_vote_count",
+		"key_len" : "8",
+		"ref" : null,
+		"rows" : 30010,
+		"filtered" : 3.33,
+		"Extra" : "Using where; Backward index scan; Using temporary"
+	},
+	{
+		"id" : 1,
+		"select_type" : "SIMPLE",
+		"table" : "w1_0",
+		"partitions" : null,
+		"type" : "eq_ref",
+		"possible_keys" : "PRIMARY",
+		"key" : "PRIMARY",
+		"key_len" : "8",
+		"ref" : "votogether.p1_0.member_id",
+		"rows" : 1,
+		"filtered" : 100.00,
+		"Extra" : null
+	},
+	{
+		"id" : 1,
+		"select_type" : "SIMPLE",
+		"table" : "p2_0",
+		"partitions" : null,
+		"type" : "eq_ref",
+		"possible_keys" : "idx_post_id_category_id,fk_post_category_post1_idx,fk_post_category_category1_idx",
+		"key" : "idx_post_id_category_id",
+		"key_len" : "16",
+		"ref" : "votogether.p1_0.id,const",
+		"rows" : 1,
+		"filtered" : 100.00,
+		"Extra" : "Using index; Distinct"
+	}
+]
+
 ```
 
 ```sql
