@@ -20,21 +20,21 @@
 
 먼저 5초동안 **초당 30명의 유저**가 반복 요청(총 150번 요청)을 보내도록 설정했다.
 
-<img src="https://tjdtls690.github.io/assets/img/blog/조회성능개선1.PNG" width="300" height="700">
+<img src="https://tjdtls690.github.io/assets/img/blog/조회성능개선1.PNG">
 
 <br/>
 
 부하 테스트를 해본 결과, 한 번씩 요청 보내면서 테스트 했을 때 8초가 걸린 것과는 달리, **하나의 요청당 48초**가 걸리는 모습이다.
 
-<img src="https://tjdtls690.github.io/assets/img/blog/조회성능개선2.PNG" width="300" height="700">
+<img src="https://tjdtls690.github.io/assets/img/blog/조회성능개선2.PNG">
 
 <br/>
 
 또한 에러 비율이 38%인 모습이다. 현재 상태에선 초당 30건의 요청도 처리하기 힘들다는 뜻이다.
 
-<img src="https://tjdtls690.github.io/assets/img/blog/조회성능개선3.PNG" width="300" height="700">
+<img src="https://tjdtls690.github.io/assets/img/blog/조회성능개선3.PNG">
 
-<img src="https://tjdtls690.github.io/assets/img/blog/조회성능개선4.PNG" width="300" height="700">
+<img src="https://tjdtls690.github.io/assets/img/blog/조회성능개선4.PNG">
 
 <br/>
 
@@ -375,17 +375,17 @@ select
 
 먼저 3초동안 **초당 1000명의 유저**가 반복 요청(총 3000번 요청)을 보내도록 설정했다.
 
-<img src="https://tjdtls690.github.io/assets/img/blog/조회성능개선5.PNG" width="300" height="700">
+<img src="https://tjdtls690.github.io/assets/img/blog/조회성능개선5.PNG">
 
 <br/>
 
 부하 테스트를 해본 결과, 비록 하나의 요청당 86초 정도 걸리게 되었지만, **초당 1000명의 요청에도 에러 비율이 6%대를 유지**한다는 점에서 개선하기 전보다 성능이 훨씬 좋아졌다는 것에 의의를 두었다.
 
-<img src="https://tjdtls690.github.io/assets/img/blog/조회성능개선6.PNG" width="300" height="700">
+<img src="https://tjdtls690.github.io/assets/img/blog/조회성능개선6.PNG">
 
-<img src="https://tjdtls690.github.io/assets/img/blog/조회성능개선7.PNG" width="300" height="700">
+<img src="https://tjdtls690.github.io/assets/img/blog/조회성능개선7.PNG">
 
-<img src="https://tjdtls690.github.io/assets/img/blog/조회성능개선8.PNG" width="300" height="700">
+<img src="https://tjdtls690.github.io/assets/img/blog/조회성능개선8.PNG">
 
 <br/>
 
