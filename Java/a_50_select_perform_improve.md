@@ -211,7 +211,7 @@ public class PostCustomRepositoryImpl implements PostCustomRepository {
             on p1_0.id=p2_0.post_id
     where
         p2_0.category_id=1
-		and p1_0.deadline>'2023-09-28T20:59:49.237815'
+		and p1_0.deadline>'2023-11-04T21:40:45.365115'
         and p1_0.is_hidden=false
     order by
         (select
@@ -356,11 +356,11 @@ select
             on p1_0.id=p2_0.post_id 
     where
         p2_0.category_id=1
-		and p1_0.deadline>'2023-09-28T21:40:45.365115'
+		and p1_0.deadline>'2023-11-04T21:40:45.365115'
         and p1_0.is_hidden=false
     order by
         p1_0.vote_count desc -- 개선하기 전에 엄청나게 중첩된 서브쿼리가 발생한 것에 비해서 훨씬 개선된 모습이다.
-	limit 12340,10;
+	limit 30000,10;
 ```
 
 <br/>
