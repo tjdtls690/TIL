@@ -72,7 +72,7 @@
 - [[우아한테크코스 5기] 레벨2 - 계층형 아키텍처 vs 헥사고날 아키텍처](https://bit.ly/43zYwAX)
 - [[우아한테크코스 5기] 레벨2 - 여러 조회를 한 번에 진행하기](https://bit.ly/3P4q6lA)
 - [[Mysql, Querydsl] 반정규화를 통한 조회 성능 개선 (트래픽 부하 테스트)](https://bit.ly/3FKsnwu)
-- [[Mysql, Querydsl] 커버링 인덱스와 서브쿼리 추출을 통한 조회 성능 개선 (트래픽 부하 테스트)](https://bit.ly/47dVgNT)
+- [[Mysql, Querydsl] 커버링 인덱스와 쿼리 추출을 통한 조회 성능 개선 (트래픽 부하 테스트)](https://bit.ly/47dVgNT)
 
 ## [Algorithm](https://bit.ly/3NodNwd)
 - [재귀함수](https://bit.ly/3yameqc)
