@@ -368,7 +368,7 @@ public class VoteService {
 | :----------------------------------------------------------: | :-----------------------------------------------------: | :----------------------------------------------------------: |
 | select *<br />from post_option<br />where id = 1;<br /><br />**id가 1인 레코드의 Exclusive Lock 획득<br />조회 결과 : {id : 1, vote_count : 2}** |                {id : 1, vote_count : 2}                 |                                                              |
 |                                                              |                {id : 1, vote_count : 2}                 | **id가 1인 레코드에 첫 select 시도**<br /><br />**이미 Thread_1이 id가 1인 레코드의 <br />Exclusive Lock을 갖고 있으므로<br />대기 상태로 돌입** |
-| update set vote_count = 3<br />from post_option<br />where id = 1; | **{id : 1, vote_count : 3}**<br /><br />vote_count 갱신 |                                                              |
+| update set vote_count = 3<br />from post_option<br />where id = 1; | **{id : 1, vote_count : 3}**<br /><br />vote_count 갱신 |                           **대기**                           |
 |                                                              |                {id : 1, vote_count : 3}                 | **Tread_1의 작업이 마무리 되어 대기 끝**<br /><br />select *<br />from post_option<br />where id = 1;<br /><br />**조회 결과 : {id : 1, vote_count : 3}** |
 |                                                              | **{id : 1, vote_count : 4}**<br /><br />vote_count 갱신 | update set vote_count = 4<br />from post_option<br />where id = 1; |
 
