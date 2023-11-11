@@ -231,9 +231,7 @@ public class PostCustomRepositoryImpl implements PostCustomRepository {
 
 <br/>
 
-현재 vote 테이블엔 2000만건의 데이터가 들어가있는데, 정렬의 기준이 될 vote의 개수를 구하기 위해 order by에서 중첩 서브쿼리로 vote 개수를 구하는 모습이다.
-
-이 쿼리의 실행계획(explain)을 살펴보자. 
+정렬의 기준이 될 vote의 개수를 구하기 위해 order by에서 중첩 서브쿼리로 vote 개수를 구하는 모습이다. 이 쿼리의 실행계획(explain)을 살펴보자.
 
 ```json
 [
