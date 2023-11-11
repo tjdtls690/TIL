@@ -149,7 +149,7 @@ public class PostCustomRepositoryImpl implements PostCustomRepository {
 
 <br/>
 
-각 Post의 Vote 개수로 정렬하기 위해 작성한 orderBy() 메서드의 HOT case(인기순) 코드를 보면 압권이다. 2000만 건 데이터가 있는 vote 테이블을 계속 스캔해야 하는 상황이다.
+각 Post의 Vote 개수로 정렬하기 위해 작성한 orderBy() 메서드의 HOT case(인기순) 코드를 보면 압권이다. 10만건이 들어있는 Post를 풀스캔 하는 상황인데, Post 하나를 스캔할 때마다 vote count를 구하기 위해 HOT case의 서브쿼리가 계속 실행되는 사태가 발생한다.
 
 이제 이 기능을 Swagger로 테스트해보자. orderBy() 메서드를 보면 인기순(PostSortType == HOT)이 훨씬 더 성능이 느릴 게 뻔하니 인기순으로 테스트 해보겠다.
 
@@ -226,14 +226,109 @@ public class PostCustomRepositoryImpl implements PostCustomRepository {
                 post_option p4_0
             where
                 p4_0.post_id=p1_0.id)
-        ) desc limit 12340,10;
+        ) desc limit 30000,10;
 ```
 
 <br/>
 
 현재 vote 테이블엔 2000만건의 데이터가 들어가있는데, 정렬의 기준이 될 vote의 개수를 구하기 위해 order by에서 중첩 서브쿼리로 vote 개수를 구하는 모습이다.
 
-이 쿼리의 실행계획(explain)이 너무 많아서 여기에 첨부하진 않겠지만, 결국 각 Post의 Vote 개수를 구하면서 정렬해야하기에, 2000만 레코드인 Vote 테이블과 10만 레코드인 Post 테이블을 전부 스캔하게 되는 것이 가장 큰 이유이다.
+이 쿼리의 실행계획(explain)을 살펴보자. 
+
+```json
+[
+	{
+		"id" : 1,
+		"select_type" : "PRIMARY",
+		"table" : "p1_0",
+		"partitions" : null,
+		"type" : "ALL",
+		"possible_keys" : "PRIMARY,fk_post_member1_idx",
+		"key" : null,
+		"key_len" : null,
+		"ref" : null,
+		"rows" : 99575,
+		"filtered" : 3.33,
+		"Extra" : "Using where; Using temporary; Using filesort"
+	},
+	{
+		"id" : 1,
+		"select_type" : "PRIMARY",
+		"table" : "w1_0",
+		"partitions" : null,
+		"type" : "eq_ref",
+		"possible_keys" : "PRIMARY",
+		"key" : "PRIMARY",
+		"key_len" : "8",
+		"ref" : "votogether.p1_0.member_id",
+		"rows" : 1,
+		"filtered" : 100.00,
+		"Extra" : null
+	},
+	{
+		"id" : 1,
+		"select_type" : "PRIMARY",
+		"table" : "p2_0",
+		"partitions" : null,
+		"type" : "eq_ref",
+		"possible_keys" : "idx_post_id_category_id,fk_post_category_post1_idx,fk_post_category_category1_idx",
+		"key" : "idx_post_id_category_id",
+		"key_len" : "16",
+		"ref" : "votogether.p1_0.id,const",
+		"rows" : 1,
+		"filtered" : 100.00,
+		"Extra" : "Using index; Distinct"
+	},
+	{
+		"id" : 3,
+		"select_type" : "DEPENDENT SUBQUERY",
+		"table" : "p4_0",
+		"partitions" : null,
+		"type" : "ref",
+		"possible_keys" : "PRIMARY,post_id,fk_post_option_post1_idx",
+		"key" : "fk_post_option_post1_idx",
+		"key_len" : "8",
+		"ref" : "votogether.p1_0.id",
+		"rows" : 1,
+		"filtered" : 100.00,
+		"Extra" : "Using index"
+	},
+	{
+		"id" : 3,
+		"select_type" : "DEPENDENT SUBQUERY",
+		"table" : "v1_0",
+		"partitions" : null,
+		"type" : "ref",
+		"possible_keys" : "fk_vote_post_option1_idx",
+		"key" : "fk_vote_post_option1_idx",
+		"key_len" : "8",
+		"ref" : "votogether.p4_0.id",
+		"rows" : 102,
+		"filtered" : 100.00,
+		"Extra" : "Using index"
+	},
+	{
+		"id" : 2,
+		"select_type" : "DEPENDENT SUBQUERY",
+		"table" : "c",
+		"partitions" : null,
+		"type" : "ref",
+		"possible_keys" : "fk_comment_post1_idx",
+		"key" : "fk_comment_post1_idx",
+		"key_len" : "8",
+		"ref" : "votogether.p1_0.id",
+		"rows" : 1,
+		"filtered" : 100.00,
+		"Extra" : "Using index"
+	}
+]
+```
+
+
+
+Post 테이블을 제외한 다른 테이블을 조회하는 쿼리들은 커버링 인덱스를 사용하거나 type이 ref 혹은 eq_ref이기 때문에 꽤나 빠른 축에 속한다.
+
+문제는 Post 테이블을 Full table scan **(type : ALL)** 을 하고 있다는 것이다. 결국 10만건이 들어있는 Post를 풀스캔 하면서, Post 하나를 스캔할 때마다 vote count를 구하는 서브쿼리가 지속적으로 같이 실행되기 때문에 성능 저하가 심할 수밖에 없다.
 
 실제로 해당 쿼리문을 **explain analyze** 로도 분석해보면, Post 테이블을 스캔할 때 Vote 테이블을 같이 스캔해야하기 때문에, Post 테이블의 10만 레코드를 스캔하는 작업이 가장 오래 걸리는 것으로 나온다. 
 
