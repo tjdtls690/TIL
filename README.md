@@ -74,6 +74,7 @@
 - [[Mysql, Querydsl] 반정규화를 통한 조회 성능 개선 (트래픽 부하 테스트)](https://bit.ly/3FKsnwu)
 - [[Mysql, Querydsl] 커버링 인덱스와 쿼리 추출을 통한 조회 성능 개선 (트래픽 부하 테스트)](https://bit.ly/47dVgNT)
 - [[Mysql, JPA] 동시성 이슈 해결 (Syncronized, 낙관적 락, 비관적 락)](https://bit.ly/40qtVFj)
+- [[Mysql, Java] 데드락 이슈 해결](https://bit.ly/46sZzDP)
 
 ## [Algorithm](https://bit.ly/3NodNwd)
 - [재귀함수](https://bit.ly/3yameqc)
