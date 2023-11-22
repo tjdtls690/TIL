@@ -5,7 +5,7 @@
 
 <br/>
 
-# [우아한 테크 코스 5기] 레벨1 - Functional interface를 통한 의존성 제거
+# [Java] Functional interface를 통한 의존성 제거
 
 ## 1. 함수형 인터페이스를 통한 입력 및 출력 처리
 
