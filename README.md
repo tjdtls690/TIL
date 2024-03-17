@@ -88,6 +88,7 @@
 ## [DB](https://bit.ly/3uVqf3h)
 - [[MySQL] 페이징 성능 개선 여정 1편 - 잘못된 성능 개선 바로잡기](https://bit.ly/3T7j5Rm)
 - [[MySQL] 페이징 성능 개선 여정 2편 - No-Offset과 커버링 인덱스](https://bit.ly/49Rv4cG)
+- [[MySQL, JPA] 페이징 성능 개선 여정 3편 - 동시성 처리 방식 개선](https://bit.ly/3VEv8ZB)
 
 ## [Devops](https://bit.ly/3cPeSjV)
 - [gradle 빌드 추가 시 - Could not find method compile 해결 방법](https://bit.ly/3Q2X6Io)
